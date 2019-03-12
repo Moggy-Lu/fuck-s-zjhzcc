@@ -1,0 +1,80 @@
+/* pages/release/release.wxss */
+.release-container{
+  margin: 30rpx 30rpx;
+}
+.release-container .textarea-box{
+  font-size: 16px;
+  letter-spacing: .8px;
+}
+.placeholder{
+  font-size: 15px;
+  color: #eee;
+}
+.release-container .updateImageBox{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.release-container .updateImageBox .upImage-box{
+  position: relative;
+}
+.release-container .updateImageBox image{
+  max-width: 200rpx;
+  min-width: 200rpx;
+  height: 200rpx;
+  margin: 10rpx;
+}
+.release-container .updateImageBox .deleteBtn image{
+  min-width: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40rpx;
+  height: 40rpx;
+}
+.release-container .otherTag{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: 1px #eee solid;
+  border-bottom: 1px #eee solid;
+  margin-top: 20rpx;
+}
+.release-container .tagItem{
+  display: flex;
+  width: 100%;
+}
+.release-container .tagTitle{
+  display: flex;
+  border-top: 1px #eee solid;
+  border-bottom: 1px #eee solid;
+  font-weight: 300;
+  color: #424242;
+  justify-content: space-between;
+  padding: 20rpx 10rpx;
+  margin: -1rpx 0;
+  flex: 10;
+}
+.release-container .tagTitle .tagText{
+  flex: 10;
+  font-size: 26rpx;
+  line-height: 40rpx;
+}
+.release-container .tagItem image{
+  max-width: 40rpx;
+  max-height: 40rpx;
+  margin: auto 6rpx;
+  flex: 1;
+}
+.release-container .releaseButton{
+  color: #fff;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 40%;
+  background: linear-gradient(to right, #039BE5 , #0288D1);
+  border-radius: 50rpx;
+  font-weight: 400;
+  font-size: 18px;
+  margin: 20rpx auto;
+  text-align: center;
+}

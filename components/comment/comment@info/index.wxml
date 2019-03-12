@@ -1,0 +1,22 @@
+<!--components/comment/comment@info/index.wxml-->
+<view class='container'>
+  <view class='header'>
+    <view class='avatarUrl'>
+    <image src='{{commentData.icon}}'></image>
+    </view>
+    <view class='userInfo'>
+      <view class='nickName'>{{commentData.nickname_from}}</view>
+      <view class='upDate'>{{time}}</view>
+    </view>
+  </view>
+  <view class='commentText'>
+    <view class='text'>{{commentData.text}}</view>
+    <view class='reply-comment-box'></view>
+  </view>
+  <view wx:if="{{isSubreply}}" class='subreply-box'>
+    <view class='subreply-item' wx:for="{{commentData.subreply.data}}">
+      <view class='subreply-name'>{{item.nickname_from}}</view>
+      <view class='subreply-text'>：{{item.text}}</view>
+    </view>
+  </view>
+</view>

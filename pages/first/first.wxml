@@ -1,0 +1,18 @@
+<!--pages/first/first.wxml-->
+<view class='container'>
+  <view class='pageIcon'>
+    <image src='../../imgs/icon/logo.png'></image>
+  </view>
+  <view class='pageTitle'>
+    <view>欢迎来到"去你的杭商"</view>
+    <view>平台需要你的授权</view>
+  </view>
+  <view class='pageText'>"去你的杭商"不会将你的信息提供给第三方仅用于平台昵称头像等个人信息展示</view>
+  
+    <button
+      open-type="getUserInfo"
+      bindgetuserinfo="bindGetUserInfo"
+    >
+      授权
+    </button>
+</view>

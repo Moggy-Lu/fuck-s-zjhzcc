@@ -1,0 +1,35 @@
+<!--pages/my/my.wxml-->
+<view class='myContainer'>
+  <view class='my-header'>
+    <view class='userInfo-mian'>
+      <view class='avatarUrl'>
+        <image src='{{userInfo.avatarUrl}}'></image>
+        <view class='userName'>{{userInfo.nickName}}</view> 
+      </view>
+    </view>
+    <view class='fans-box'>
+      <view class='item'>
+        <view class='title'>关注</view>
+        <view class='num'>{{12}}</view>
+      </view>
+      <view class='item'>
+        <view class='title'>粉丝</view>
+        <view class='num'>{{22}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='icon-box'>
+    <view bindtap='navCheckIn' class='icon-item checkIn-icon'>
+      <image src=""></image>
+      <view>我的动态</view>
+    </view>
+    <view bindtap='navScheduleIn' class='icon-item schedule-icon'>
+      <image src=""></image>
+      <view>我的活动</view>
+    </view>
+    <view bindtap='navScheduleIn' class='icon-item leave-icon'>
+      <image src=""></image>
+      <view>我的交易</view>
+    </view>
+  </view>
+</view>

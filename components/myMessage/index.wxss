@@ -1,0 +1,38 @@
+/* components/myMessage/index.wxss */
+.container{
+  border-left: 2px rgba(255, 82, 82, 0.4) solid;
+  margin: 0 40rpx;
+  position: relative;
+}
+.container .circle-icon{
+  width: 16rpx;
+  height: 16rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  border: 6rpx #FF5252 solid;
+  position: absolute;
+  left: -14rpx;
+}
+.container .message-box{
+  display: flex;
+  flex-direction: column;
+  padding: 0rpx 0rpx 20rpx 30rpx;
+  font-size: 30rpx;
+}
+.container .message-box .time{
+  font-size: 16px;
+  color: #dbdbdb;
+  line-height: 16px;
+}
+.container .message-box .text{
+  margin-top: 16rpx;
+  margin-right: 100rpx;
+}
+.container .message-box .icon-box{
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 20rpx;
+}
+.container .message-box .icon-box .icon{
+  padding-right: 20rpx;
+}

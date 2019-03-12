@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my",
+    "pages/release/release",
+    "pages/checkIn/checkIn",
+    "pages/articleDetail/articleDetail",
+    "pages/classSchedule/classSchedule",
+    "pages/myActive/myActive",
+    "pages/first/first",
+    "pages/activeDetail/activeDetail"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#4AA1FF",
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "去你的杭商",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50,
+    "backgroundColor": "#eee"
+  },
+  "tabBar": {
+    "selectedColor": "#000",
+    "borderStyle": "white",
+    "color": "#888",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "imgs/icon/home-default.png",
+        "selectedIconPath": "imgs/icon/home.png"
+      },
+      {
+        "pagePath": "pages/release/release",
+        "text": "发布",
+        "iconPath": "imgs/icon/release.png",
+        "selectedIconPath": "imgs/icon/release.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "imgs/icon/my-default.png",
+        "selectedIconPath": "imgs/icon/my.png"
+      }
+    ]
+  }
+}

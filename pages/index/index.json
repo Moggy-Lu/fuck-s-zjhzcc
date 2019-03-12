@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "information-cpt" : "/components/information/index"
+  }
+}

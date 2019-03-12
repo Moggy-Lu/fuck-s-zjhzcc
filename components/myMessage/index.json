@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "like-cpt": "../like/index",
+    "commentIcon-cpt": "../comment/comment@icon/index",
+    "forward-cpt": "../forward/index"
+    }
+}

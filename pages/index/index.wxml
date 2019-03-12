@@ -1,0 +1,45 @@
+<!--pages/index/index.wxml-->
+<view class='container'>
+  <view class='search-box'>
+    <view class='search'>
+      <view class='search-spot'></view>
+      <input placeholder='搜索' placeholder-class='placeholder'></input>
+    </view>
+  </view>
+  <view class='swiper-box'>
+    <swiper indicator-active-color="#fff" indicator-dots="true" autoplay="true" interval="10000">
+      <block wx:key="key" wx:for="{{itemList}}">
+        <swiper-item>
+          <view class='swiper-item'>
+            <image mode='widthFix' src='{{item.url}}' width="100%" height="100rpx" />
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='icon-box'>
+    <view bindtap='navCheckIn' class='icon-item checkIn-icon'>
+      <image src=""></image>
+      <view>活动签到</view>
+    </view>
+    <view bindtap='navScheduleIn' class='icon-item schedule-icon'>
+      <image src=""></image>
+      <view>课表查询</view>
+    </view>
+    <view bindtap='navScheduleIn' class='icon-item leave-icon'>
+      <image src=""></image>
+      <view>闲置交易</view>
+    </view>
+  </view>
+  <view class='classify-box'>
+    <scroll-view class='scroll-view' scroll-x style="width: 100%">
+        <view data-index="{{index}}" wx:for="{{tagList}}" bindtap='onScrollItem' class='scroll-item {{item.status?"active":""}}'>{{item.text}}</view>
+    </scroll-view>
+  </view>
+  <view class='information-box'>
+    <view class='information-main'>
+      <information-cpt wx:for="{{infoItem}}" infoItem="{{item}}" />
+    </view>
+  </view>
+</view>
+         

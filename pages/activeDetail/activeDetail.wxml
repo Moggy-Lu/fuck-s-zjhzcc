@@ -1,0 +1,41 @@
+<!--pages/activeDetail/activeDetail.wxml-->
+<view class='container'>
+  <view class='item-box active-main'>
+    <view class='poster'>
+      <image src='{{activeData.image}}'></image>
+    </view>
+    <view class='active-info'>
+      <view class='title'>{{activeData.e_name}}</view>
+      <view class='item group'>{{activeData.group}}</view>
+      <view class='item time'>{{activeData.startup_time}}</view>
+      <view class='item address'>{{activeData.address}}</view>
+      <view class='icon-box'></view>
+    </view>
+  </view>
+  <view wx:if="{{isMe}}" class='myActive'>
+      <view class='myActive-item'>
+        <view class='myActive-icon'></view>
+        <view class='text'>编辑活动</view>
+      </view>
+      <view class='myActive-item'>
+        <view class='myActive-icon'></view>
+        <view class='text'>开始签到</view>
+      </view>
+      <view class='myActive-item'>
+        <view class='myActive-icon'></view>
+        <view class='text'>停止签到</view>
+      </view>
+    </view>
+  <view class='item-box introduce'>
+    <view class='title'>简介</view>
+    <view class='main-text'></view>
+  </view>
+  <view class='item-box other-message'>
+    <view class='title'>其他信息</view>
+    <view class='other-box'></view>
+  </view>
+  <view class='item-box comment'>
+    <view class='title'>评论</view>
+    <view class='comment-box'></view>
+  </view>
+</view>

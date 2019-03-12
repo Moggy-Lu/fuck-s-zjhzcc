@@ -1,0 +1,25 @@
+<!--components/information/index.wxml-->
+<view class='info-container' catchtap='clickInfo'>
+  <view class='info-header'>
+    <view class='avatarUrl'>
+      <image src="{{infoItem.icon}}"></image>
+    </view>
+    <view class='user-info' catchtap='clickUser'>
+      <view class='nickName'>{{infoItem.nickname}}</view>
+      <view class='upDate'>{{time}}</view>
+    </view>
+  </view>
+  <view class='info-main'>
+    <view class='text-main'>{{infoItem.text}}</view>
+    <view class='imgs-main {{hasBig?"bigImg":"smallImg"}}'>
+      <image mode='aspectFill' data-index='{{index}}' catchtap='previewImg' wx:key="key" wx:for="{{infoItem.imgs}}" src="{{item.url}}"></image>
+    </view>
+  </view>
+  <view class='info-bottom'>
+    <view class='action-icon' catchtap="clickAction">
+      <forward-cpt />
+      <commentIcon-cpt count="{{infoItem.sum_reply}}" mid="{{infoItem.id}}" />
+      <like-cpt catch:like="onLike" class="like" like="{{like}}" count="{{infoItem.sum_like}}" />
+    </view>
+  </view>
+</view>

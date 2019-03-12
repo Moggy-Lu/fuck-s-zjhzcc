@@ -1,0 +1,15 @@
+<!--components/myMessage/index.wxml-->
+<view catchtap='onMessage' class='container'>
+  <view class='circle-icon'></view>
+  <view class='message-box'>
+    <view class='info-main'>
+      <view class='time'>{{time}}</view>
+      <view class='text'>{{myMessage.text}}</view>
+      <view class='images'></view>
+    </view>
+    <view class='icon-box'>
+      <commentIcon-cpt class="icon" count="{{myMessage.sum_reply}}" mid="{{myMessage.id}}" />
+      <like-cpt class="icon" catch:like="onLike" class="like" like="{{like}}" count="{{myMessage.sum_like}}" />
+    </view>
+  </view>
+</view>

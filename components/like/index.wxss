@@ -1,0 +1,14 @@
+/* components/like/index.wxss */
+.container{
+  display: flex;
+  text-align: center;
+}
+.container image{
+  width:40rpx;
+  height:40rpx;
+}
+.container .likeNum{
+  color: #999;
+  padding-left: 4px;
+  font-size: 14px;
+}

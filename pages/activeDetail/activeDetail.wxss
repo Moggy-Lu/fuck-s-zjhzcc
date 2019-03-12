@@ -1,0 +1,54 @@
+/* pages/activeDetail/activeDetail.wxss */
+page{
+  background:rgba(242,242,242,1);
+}
+.container .item-box{
+  margin: 24rpx; 
+  height:181px;
+  background:rgba(255,255,255,1);
+  border-radius:10px;
+}
+.container .active-main{
+  display: flex;
+  position: relative;
+  z-index: 99;
+}
+.container .active-main .poster image{
+  width:112px;
+  height:157px;
+  border-radius: 5px;
+  margin: 24rpx;
+}
+.container .active-main .active-info{
+  display: flex;
+  flex-direction: column;
+}
+.container .active-main .active-info .title{
+  margin-top: 32rpx;
+  padding: 0;
+}
+.container .item-box .title{
+  padding: 24rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.container .myActive{
+  display: flex;
+  justify-content: space-around;
+  background:rgba(217,237,255,1);
+  border-radius:0px 0px 10px 10px;
+  margin: -42rpx 24rpx 24rpx 24rpx;
+}
+.container .myActive .myActive-item{
+  display: flex;
+  padding: 48rpx 0 24rpx 0;
+  align-items: center;
+  font-size: 28rpx;
+}
+.container .myActive .myActive-item .myActive-icon{
+  width:12px;
+  height:12px;
+  border:2px solid rgba(51,51,51,1);
+  border-radius:50%;
+  margin-right: 8rpx;
+}

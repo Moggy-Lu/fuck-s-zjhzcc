@@ -1,0 +1,35 @@
+/* pages/first/first.wxss */
+page{
+  background: #F5F5F5;
+}
+.container{
+  margin: 20rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: Tahoma,Helvetica,Arial,'宋体',sans-serif; 
+}
+.container .pageIcon image{
+  width: 80px;
+  height: 80px;
+  margin: 100rpx;
+  border-radius: 80px;
+}
+.container .pageTitle{
+  font-size: 18px;
+  font-family: PMingLiU;
+}
+.container .pageText{
+  font-size: 14px;
+  font-weight: 300;
+  color: #616161;
+  padding: 20rpx 100rpx;
+}
+button{
+  width: 100%;
+  background: #2196F3;
+  color: #fff;
+  font-size: 16px;
+}

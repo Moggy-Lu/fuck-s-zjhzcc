@@ -1,0 +1,57 @@
+/* components/activeList/index.wxss */
+.active-contianer{
+  display: flex;
+  flex: row;
+  background:rgba(255,255,255,1);
+  border-radius:20rpx;
+  margin-top: 24rpx;
+}
+.active-contianer .active-image{
+  flex: 1;
+  margin-top: 24rpx;
+  padding-left: 24rpx;
+}
+.active-contianer .active-image image{
+  width: 180rpx;
+  height: 250rpx;
+  background: #eee;
+  border-radius: 10rpx;
+}
+.active-contianer .active-message{
+  flex: 2;
+  margin-top: 24rpx;
+}
+.active-contianer .active-message .active-title{
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  line-height:20px;
+  margin-bottom: 16rpx;
+}
+.active-contianer .active-main{
+  display: flex;
+  flex-direction: column;
+}
+.active-contianer .active-main .active-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+.active-contianer .active-main .active-item .item-icon{
+  width: 12rpx;
+  height: 12rpx;
+  border: 2px solid;
+  border-radius: 20rpx;
+  background: rgba(255,255,255,1);
+  margin-right: 8rpx;
+}
+.active-contianer .active-main .active-item .active-text{
+  color: #333;
+  font-size: 24rpx;
+  line-height: 36rpx;
+}
+.active-contianer .active-message .active-introduction{
+  color: #999;
+  font-size: 24rpx;
+}

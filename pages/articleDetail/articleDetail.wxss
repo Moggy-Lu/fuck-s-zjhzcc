@@ -1,0 +1,102 @@
+/* pages/articleDetail/articleDetail.wxss */
+page{
+  background:rgba(242,242,242,1);
+}
+.detail-container{
+  background: #fff;
+  margin: 24rpx;
+  border-radius:10px;
+}
+.detail-container .article-main .article-header image{
+  width: 40px;
+  height: 40px;
+  margin: 24rpx 16rpx 24rpx 24rpx;
+  border-radius: 50%;
+}
+.detail-container .article-main .article-header{
+  display: flex;
+  line-height:18px;
+  align-items: center;
+}
+.detail-container .article-main .article-header .userName{
+  display: flex;
+  flex-direction: column;
+}
+.detail-container .article-main .article-header .name{
+  color:rgba(51,51,51,1);
+  font-size: 28rpx;
+}
+.detail-container .article-main .article-header .userName .time{
+  color:rgba(153,153,153,1);
+  font-size: 28rpx;
+}
+.detail-container .article-main .article{
+  margin:0rpx 24rpx 24rpx 24rpx;
+  font-size:32rpx;
+  line-height:24px;
+  color:rgba(51,51,51,1);
+}
+.detail-container .article-main .article .imagesList{
+  margin-top: 8rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.detail-container .article-main .article .imagesList image{
+  width: 210rpx;
+  height: 210rpx;
+  margin: 2px;
+  border-radius: 5px;
+}
+.detail-container .comment-box {
+  display: flex;
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  background-color: #fefefe;
+  border-top: 1rpx #eee solid;
+  padding: 20rpx 20rpx;
+  z-index: 99;
+}
+.detail-container .comment-box input{
+  width: 85%;
+}
+.detail-container .comment-box .commentBtn {
+  font-size: 32rpx;
+  color: #757575;
+}
+.placeholderCss{
+  color: #9e9e9e;
+  font-size: 26rpx;
+}
+.detail-container .info-bottom{
+  display: flex;
+  padding: 32rpx 24rpx 24rpx 24rpx;
+  border-bottom:1px solid rgba(242,242,242,1);
+}
+.detail-container .info-bottom .likeUserList{
+  flex: 1;
+}
+.detail-container .info-bottom .action-icon{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex: 1;
+}
+.detail-container .comment-main{
+  margin-bottom: 110rpx;
+}
+.detail-container .comment-main .comment-header{
+  display: flex;
+  flex-direction: row;
+  padding: 14rpx;
+  border-bottom: 1rpx #eee solid;
+  font-size: 14px;
+  font-weight: 300;
+}
+.detail-container .comment-main .comment-header .line{
+  width: 0;
+  height: 18px;
+  border-left: 4px #ffeb3b solid;
+  margin: auto 15rpx;
+}

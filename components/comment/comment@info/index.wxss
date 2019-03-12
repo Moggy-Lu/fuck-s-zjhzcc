@@ -1,0 +1,50 @@
+/* components/comment/comment@info/index.wxss */
+.container{
+  margin: 0 20rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx #eee solid;
+}
+.container .header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.container .header .avatarUrl image{
+  width: 50rpx;
+  height: 50rpx;
+  padding: 0 10rpx;
+  border-radius: 50rpx;
+}
+.container .header .userInfo{
+  display: flex;
+  flex-direction: column;
+  line-height: 14px;
+}
+.container .header .userInfo .nickName{
+  font-size: 28rpx;
+  font-weight: 300;
+}
+.container .header .userInfo .upDate{
+  font-size: 24rpx;
+  color: #dbdbdb;
+}
+.container .commentText{
+  font-size: 26rpx;
+  font-weight: 300;
+  margin: 6rpx 0rpx 6rpx 70rpx;
+}
+.container .subreply-box{
+  background: #eee;
+  margin-left: 70rpx;
+  font-size: 26rpx;
+  padding: 14rpx;
+  display: flex;
+  flex-direction: column;
+}
+.container .subreply-box .subreply-item{
+  display: flex;
+  margin-bottom: 6rpx;
+}
+.container .subreply-box .subreply-name{
+  color: #039be5;
+}

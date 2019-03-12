@@ -1,0 +1,168 @@
+/* pages/checkIn/checkIn.wxss */
+page{
+  background:rgba(242,242,242,1);
+}
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 28rpx;
+}
+.container .search-box{
+  width: 100%;
+  height: 56rpx;
+  background:rgba(74,161,255,1);
+  padding: 16rpx 0rpx;
+}
+.container .search-box .search{
+  width:700rpx;
+  height:56rpx;
+  background:rgba(255,255,255,1);
+  opacity:1;
+  border-radius:30rpx;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  align-items: center;
+}
+.container .search-box .search .search-spot{
+  width:14px;
+  height:14px;
+  background:rgba(153,153,153,1);
+  border-radius:50%;
+  opacity:1;
+  margin: 0 6rpx 0 32rpx;
+}
+.placeholder{
+  width: 28px;
+  color:rgba(153,153,153,1);
+}
+.container .search-box .search input{
+  width: 90%;
+}
+.container .icon-box{
+  display: flex;
+  z-index: 99;
+  width:700rpx;
+  height:148rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 10px rgba(0,0,0,0.1);
+  opacity:1;
+  border-radius:10px;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 24rpx;
+  margin-left: 24rpx;
+}
+.container .icon-box image{
+  width:52rpx;
+  height:52rpx;
+  border:2px solid rgba(51,51,51,1);
+  border-radius: 52rpx;
+  margin-right: 16rpx;
+}
+.container .icon-box .click{
+  color: rgba(74,161,255,1);
+}
+.container .icon-box .click image{
+  width:52rpx;
+  height:52rpx;
+  border:2px solid rgba(74,161,255,1);
+  border-radius: 52rpx;
+}
+.container .icon-box .icon-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.container .createActive-box{
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background: rgba(217,237,255,1);
+  margin: 30rpx;
+  margin-top: -10rpx;
+}
+.container .createActive-box .create-box{
+  display: flex;
+  flex-direction: column;
+  margin-left: 34rpx;
+}
+.container .createActive-box .create-box .option-item{
+  display: flex;
+  height: 88rpx;
+  flex-direction: row;
+  line-height: 28rpx;
+}
+.container .createActive-box .create-box .option-item .option-icon{
+  width: 16rpx;
+  height: 16rpx;
+  border: 2px solid;
+  border-radius: 20rpx;
+  background: rgba(255,255,255,1);
+  margin-right: 14rpx;
+  margin-top: 34rpx;
+}
+.container .createActive-box .option-item .optionInfo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom:1px solid rgba(206,227,247,1);
+  width: 100%;
+}
+.container .createActive-box .option-item .optionInfo input{
+  height: 28rpx;
+  width: 470rpx;
+}
+.container .createActive-box .option-item .addBtn{
+  width: 30rpx;
+  height: 30rpx;
+  background:rgba(74,161,255,1);
+  border-radius:50%;
+  position: relative;
+}
+.container .createActive-box .option-item .addBtn .vertical{
+  position: absolute;
+  width:0px;
+  height:16rpx;
+  border:1px solid rgba(255,255,255,1);
+  top:5.5rpx;
+  left: 14rpx;
+}
+.container .createActive-box .option-item .addBtn .transverse{
+  position: absolute;
+  width:16rpx;
+  height:0px;
+  border:1px solid rgba(255,255,255,1);
+  top:14rpx;
+  left: 5.5rpx;
+}
+.container .allActive-box{
+  margin: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.container .createActive-box button{
+  width:640rpx;
+  height:76rpx;
+  background:rgba(74,161,255,0.5);
+  border-radius:40rpx;
+  margin: 24rpx auto;
+  color: #fff;
+  border: 0;
+  font-size: 14px;
+  text-align: center;
+  line-height: 36px;
+}
+.container .createActive-box .img-box image{
+  width:120rpx;
+  height:120rpx;
+  border-radius:10px;
+  margin-top: 16rpx;
+}
+.container .allActive-box .active-title{
+  font-weight: 500;
+  font-size: 32rpx;
+  margin-top: 10rpx;
+  line-height: 36rpx;
+}

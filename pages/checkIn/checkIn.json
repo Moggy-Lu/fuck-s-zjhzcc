@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "active-cpt": "../../components/activeList/index"
+  }
+}

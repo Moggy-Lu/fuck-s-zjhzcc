@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "information-cpt": "/components/information/index"
+  },
+  "window": {
+    "navigationBarTitleText": "我的"
+  }
+}
