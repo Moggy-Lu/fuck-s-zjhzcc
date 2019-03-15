@@ -6,9 +6,18 @@
     </view>
     <view class='active-info'>
       <view class='title'>{{activeData.e_name}}</view>
-      <view class='item group'>{{activeData.group}}</view>
-      <view class='item time'>{{activeData.startup_time}}</view>
-      <view class='item address'>{{activeData.address}}</view>
+      <view class='item group'>
+        <view class='item-icon' style='border-color: #F973D5;'></view>
+        <view class='text'>{{activeData.group}}</view>
+      </view>
+      <view class='item time'>
+        <view class='item-icon' style='border-color: #F973D5;'></view>
+        <view class='text'>{{activeData.startup_time}}</view>
+      </view>
+      <view class='item address'>
+        <view class='item-icon' style='border-color: #F973D5;'></view>
+        <view class='text'>{{activeData.address}}</view>
+      </view>
       <view class='icon-box'></view>
     </view>
   </view>

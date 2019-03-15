@@ -11,7 +11,7 @@
     "pages/activeDetail/activeDetail"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#4AA1FF",
+    "navigationBarBackgroundColor": "#FFB100",
     "backgroundTextStyle": "light",
     "navigationBarTitleText": "去你的杭商",
     "navigationBarTextStyle": "white",

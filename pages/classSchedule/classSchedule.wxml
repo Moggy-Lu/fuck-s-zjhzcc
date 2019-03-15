@@ -1,17 +1,24 @@
 <!--pages/classSchedule/classSchedule.wxml-->
 <view class='container'>
-  <view class='search-box'>
-    <view class='search'>
-      <view class='search-spot'></view>
-      <input placeholder='搜索' placeholder-class='placeholder'></input>
-    </view>
-  </view>
   <view class='classic-main'>
     <view class='week-box'>
       <view bindtap='onWeekBind' data-index="{{index}}" wx:for="{{dateList}}" class='{{item.num==now?"active":""}} week-item'>{{item.week}}</view>
     </view>
     <view class='classicList'>
-      <view wx:if="{{item}}" wx:for="{{week}}" class='classic-text'>{{item}}</view>
+      <view wx:if="{{item}}" wx:for="{{week}}" class='classic-text'>
+        <view class='icon-cirlce'></view>
+        <view class='info-box'>
+          <view class='main-info'>
+            <view class='classic-title'>{{item[4]}}</view>
+            <view class='classic-address'>{{item[0]}}</view>
+          </view>
+          <view class='minor-info'>
+            <view class='minor-item classic-teacher'>{{item[1]}}</view>
+            <view class='minor-item classic-time'>{{item[2]}}</view>
+            <view class='minor-item classic-week'>{{item[3]}}</view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>

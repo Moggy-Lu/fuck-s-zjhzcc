@@ -34,7 +34,7 @@
   margin: 6rpx 0rpx 6rpx 70rpx;
 }
 .container .subreply-box{
-  background: #eee;
+  background: #F2F2F2;
   margin-left: 70rpx;
   font-size: 26rpx;
   padding: 14rpx;

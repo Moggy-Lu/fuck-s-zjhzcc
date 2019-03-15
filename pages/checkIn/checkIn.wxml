@@ -1,11 +1,5 @@
 <!--pages/checkIn/checkIn.wxml-->
 <view class='container'>
-  <view class='search-box'>
-    <view class='search'>
-      <view class='search-spot'></view>
-      <input placeholder='搜索' placeholder-class='placeholder'></input>
-    </view>
-  </view>
 <view class='icon-box'>
   <view bindtap='showCreateActive' class='{{createShow?"click ":""}}icon-item create-box'>
     <image src=''></image>

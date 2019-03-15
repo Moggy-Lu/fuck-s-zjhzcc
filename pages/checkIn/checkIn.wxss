@@ -8,38 +8,6 @@ page{
   flex-direction: column;
   font-size: 28rpx;
 }
-.container .search-box{
-  width: 100%;
-  height: 56rpx;
-  background:rgba(74,161,255,1);
-  padding: 16rpx 0rpx;
-}
-.container .search-box .search{
-  width:700rpx;
-  height:56rpx;
-  background:rgba(255,255,255,1);
-  opacity:1;
-  border-radius:30rpx;
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  align-items: center;
-}
-.container .search-box .search .search-spot{
-  width:14px;
-  height:14px;
-  background:rgba(153,153,153,1);
-  border-radius:50%;
-  opacity:1;
-  margin: 0 6rpx 0 32rpx;
-}
-.placeholder{
-  width: 28px;
-  color:rgba(153,153,153,1);
-}
-.container .search-box .search input{
-  width: 90%;
-}
 .container .icon-box{
   display: flex;
   z-index: 99;

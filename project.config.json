@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.5.0",
 	"appid": "wxce8e03557e4b97e7",
-	"projectname": "%E5%8E%BB%E4%BB%96%E5%A8%98%E7%9A%84%E6%9D%AD%E5%95%86",
+	"projectname": "gotoHsy",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

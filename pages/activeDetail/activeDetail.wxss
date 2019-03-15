@@ -22,10 +22,22 @@ page{
 .container .active-main .active-info{
   display: flex;
   flex-direction: column;
+  font-size: 24rpx;
 }
 .container .active-main .active-info .title{
   margin-top: 32rpx;
   padding: 0;
+}
+.container .active-main .active-info .item{
+  display: flex;
+}
+.container .active-main .active-info .item .item-icon{
+  width: 12rpx;
+  height: 12rpx;
+  border: 2px solid;
+  border-radius: 20rpx;
+  background: rgba(255,255,255,1);
+  margin-right: 8rpx;
 }
 .container .item-box .title{
   padding: 24rpx;

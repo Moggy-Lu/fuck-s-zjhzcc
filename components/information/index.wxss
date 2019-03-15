@@ -3,11 +3,16 @@
   display: flex;
   flex-direction: column;
   background: #fff;
-  border-radius: 20rpx;
   margin: 24rpx;
   margin-top: 0;
+  border-bottom:1px solid rgba(242,242,242,1);
 }
 .info-container .info-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.info-container .info-header .user-main{
   display: flex;
 }
 .info-container .info-header .user-info{
@@ -27,6 +32,13 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+.info-container .info-header .concern-btn{
+  font-size: 26rpx;
+  color: #FFB100;
+  padding: 16rpx 24rpx;
+  border:1px solid rgba(255,177,0,1);
+  border-radius:38rpx;
 }
 .info-container .info-main{
   margin: 0px 12px 12px 12px;
@@ -63,5 +75,5 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
-  margin-bottom: 20rpx;
+  margin-bottom: 50rpx;
 }

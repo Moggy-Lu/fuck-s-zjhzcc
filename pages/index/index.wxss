@@ -1,11 +1,8 @@
 /* pages/index/index.wxss */
-page{
-  background: #f5f5f5;
-}
 .container .search-box{
   width: 100%;
   height: 56rpx;
-  background:rgba(74,161,255,1);
+  background:rgba(255,177,0,1);
   padding: 16rpx 0rpx;
 }
 .container .search-box .search{
@@ -34,8 +31,19 @@ page{
 .container .search-box .search input{
   width: 90%;
 }
+.container .space-box{
+  width: 100%;
+  height: 140rpx;
+  background:rgba(255,177,0,1);
+}
 .container .swiper-box{
+  height: 140px;
   padding: 24rpx;
+  margin-top: -164rpx;
+}
+.container .swiper-box swiper{
+  box-shadow:0px 3px 6px rgba(0,0,0,0.16);
+  border-radius: 20rpx;
 }
 .container .swiper-box image{
   width: 100%;
@@ -47,18 +55,13 @@ page{
   height: 100%;
 }
 .container .icon-box{
-  height: 150rpx;
-  border-radius: 20rpx;
-  margin: 24rpx;
-  margin-top: 0rpx;
-  background:rgba(255,255,255,1);
-  box-shadow:0px 0px 10px rgba(0,0,0,0.1);
+  padding-top: 48rpx;
+  padding-bottom: 20rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 .container .icon-box .icon-item{
-  /* flex: 1; */
   display: flex;
   flex-direction: column;
   font-size: 28rpx;
@@ -82,6 +85,7 @@ page{
 .container .classify-box{
   width: 100%;
   margin: 48rpx 0 24rpx 0;
+  position: relative;
 }
 .container .classify-box .scroll-view{
   display: flex;
@@ -96,6 +100,23 @@ page{
 }
 .container .classify-box .active{
   color:rgba(51,51,51,1);
-  border-bottom: 6rpx #4AA1FF solid;
-  font-weight: 500;
+  border-bottom: 6rpx #FFB100 solid;
+  font-weight: 600;
+  font-size: 40rpx;
+}
+.container .classify-box .filter-box{
+  position: absolute;
+  display: flex;
+  right: 30rpx;
+  color:rgba(153,153,153,1);
+  font-size: 32rpx;
+  top: 6rpx;
+  align-items: center;
+}
+.container .classify-box .filter-box image{
+  width:32rpx;
+  height:32rpx;
+  background:rgba(198,198,198,1);
+  border-radius:50%;
+  margin-left: 8rpx;
 }

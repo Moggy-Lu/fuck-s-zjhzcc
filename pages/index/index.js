@@ -16,30 +16,12 @@ Page({
       }, {
         url: '../../imgs/test/banner@3.png'
       }],
-      tagList: [{
-        status:true,
-        text: "热门"
-      }, {
-          status: false,
+      tagList: [ {
+          status: true,
           text: "精选"
         }, {
           status: false,
           text: "关注"
-        }, {
-          status: false,
-          text: "兼职"
-        }, {
-          status: false,
-          text: "问答"
-        }, {
-          status: false,
-          text: "拼团"
-        }, {
-          status: false,
-          text: "求助"
-        }, {
-          status: false,
-          text: "吐槽"
         }],
       infoItem: [],
       page:1,
@@ -104,6 +86,7 @@ Page({
       tagList: data
     })
   },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

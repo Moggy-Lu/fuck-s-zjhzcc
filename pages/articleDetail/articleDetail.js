@@ -85,6 +85,21 @@ Page({
         commentText: event.detail.value
       })
     },
+    //点击图片预览
+    previewImg: function (e) {
+      let index = e.currentTarget.dataset.index;
+      let imgArr = []
+      for (let item in this.data.articleData.imgs) {
+        imgArr.push(this.data.articleData.imgs[item].url)
+      }
+      wx.previewImage({
+        current: imgArr[index],     //当前图片地址
+        urls: imgArr,               //所有要预览的图片的地址集合 数组形式
+        success: function (res) { },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    },
 
   /**
    * 生命周期函数--监听页面加载
@@ -105,7 +120,6 @@ Page({
         articleData:res,
         time:time,
         commentUser: res.nikename
-
       })
     })
   //获取评论列表

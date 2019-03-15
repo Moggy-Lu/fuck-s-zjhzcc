@@ -1,13 +1,16 @@
 <!--components/information/index.wxml-->
 <view class='info-container' catchtap='clickInfo'>
   <view class='info-header'>
-    <view class='avatarUrl'>
-      <image src="{{infoItem.icon}}"></image>
+    <view class='user-main'>
+      <view class='avatarUrl'>
+        <image src="{{infoItem.icon}}"></image>
+      </view>
+      <view class='user-info' catchtap='clickUser'>
+        <view class='nickName'>{{infoItem.nickname}}</view>
+        <view class='upDate'>{{time}}</view>
+      </view>
     </view>
-    <view class='user-info' catchtap='clickUser'>
-      <view class='nickName'>{{infoItem.nickname}}</view>
-      <view class='upDate'>{{time}}</view>
-    </view>
+    <view class='concern-btn'>关注</view>
   </view>
   <view class='info-main'>
     <view class='text-main'>{{infoItem.text}}</view>
