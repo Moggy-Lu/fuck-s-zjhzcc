@@ -1,15 +1,16 @@
 <!--pages/checkIn/checkIn.wxml-->
 <view class='container'>
-<view class='icon-box'>
-  <view bindtap='showCreateActive' class='{{createShow?"click ":""}}icon-item create-box'>
-    <image src=''></image>
-    <view class='icon-title'>发起活动</view>
+  <view class='space-box'></view>
+  <view class='icon-box'>
+    <view bindtap='showCreateActive' class='{{createShow?"click ":""}}icon-item create-box'>
+      <image src=''></image>
+      <view class='icon-title'>发起活动</view>
+    </view>
+    <view bindtap='addActiveBind' class='icon-item onBind-box'>
+      <image src=''></image>
+      <view class='icon-title'>现场签到</view>
+    </view>
   </view>
-  <view bindtap='addActiveBind' class='icon-item onBind-box'>
-    <image src=''></image>
-    <view class='icon-title'>现场签到</view>
-  </view>
-</view>
   <form bindsubmit="formSubmit">
     <view animation="{{animationData}}" wx:if="{{createShow}}" class='createActive-box'>
       <view class='create-box'>
@@ -80,7 +81,10 @@
     </view>
   </form>
   <view class='allActive-box'>
-    <view class='active-title'>热门活动</view>
+    <view class='title-box'>
+      <view class='item active'>热门</view>
+      <view class='item'>全部</view>
+    </view>
     <active-cpt wx:for="{{activeList}}" activeData="{{item}}" />
   </view>
 </view>

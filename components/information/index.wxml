@@ -15,7 +15,15 @@
   <view class='info-main'>
     <view class='text-main'>{{infoItem.text}}</view>
     <view class='imgs-main {{hasBig?"bigImg":"smallImg"}}'>
-      <image mode='aspectFill' data-index='{{index}}' catchtap='previewImg' wx:key="key" wx:for="{{infoItem.imgs}}" src="{{item.url}}"></image>
+      <image 
+      style='{{hasfit?"max-width: 264rpx;" : "max-height: 264rpx;"}}' 
+      bindload="{{hasBig?'imageLoad':''}}" 
+      mode='aspectFit' 
+      data-index='{{index}}' 
+      catchtap='previewImg' 
+      wx:key="key" 
+      wx:for="{{infoItem.imgs}}" 
+      src="{{item.url}}"></image>
     </view>
   </view>
   <view class='info-bottom'>

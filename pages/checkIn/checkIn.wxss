@@ -1,47 +1,43 @@
 /* pages/checkIn/checkIn.wxss */
-page{
-  background:rgba(242,242,242,1);
-}
 .container{
   width: 100%;
   display: flex;
   flex-direction: column;
   font-size: 28rpx;
 }
+.container .space-box{
+  width: 100%;
+  height: 100rpx;
+  background:rgba(255,177,0,1);
+}
 .container .icon-box{
   display: flex;
   z-index: 99;
   width:700rpx;
-  height:148rpx;
+  height:152rpx;
   background:rgba(255,255,255,1);
-  box-shadow:0px 0px 10px rgba(0,0,0,0.1);
+  box-shadow:0px 6px 20px rgba(0,0,0,0.1);
   opacity:1;
   border-radius:10px;
   justify-content: space-around;
   align-items: center;
-  margin-top: 24rpx;
+  margin-top: -76rpx;
   margin-left: 24rpx;
 }
 .container .icon-box image{
-  width:52rpx;
-  height:52rpx;
-  border:2px solid rgba(51,51,51,1);
-  border-radius: 52rpx;
+  width:54rpx;
+  height:54rpx;
+  background:rgba(255,177,0,1);
+  border-radius: 50%;
   margin-right: 16rpx;
-}
-.container .icon-box .click{
-  color: rgba(74,161,255,1);
-}
-.container .icon-box .click image{
-  width:52rpx;
-  height:52rpx;
-  border:2px solid rgba(74,161,255,1);
-  border-radius: 52rpx;
 }
 .container .icon-box .icon-item{
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  color:rgba(255,177,0,1);
 }
 .container .createActive-box{
   display: flex;
@@ -106,7 +102,7 @@ page{
   left: 5.5rpx;
 }
 .container .allActive-box{
-  margin: 30rpx;
+  margin: 48rpx 32rpx;
   display: flex;
   flex-direction: column;
 }
@@ -132,5 +128,22 @@ page{
   font-weight: 500;
   font-size: 32rpx;
   margin-top: 10rpx;
+  line-height: 36rpx;
+}
+.container .allActive-box .title-box{
+  display: flex;
+  padding-top: 16rpx;
+}
+.container .allActive-box .title-box .item{
+  margin-right: 48rpx;
+  color:rgba(153,153,153,1);
+  font-size: 32rpx;
+}
+.container .allActive-box .title-box .active{
+  font-size:40rpx;
+  font-weight:600;
+  color:rgba(51,51,51,1);
+  padding-bottom: 8rpx;
+  border-bottom: 8rpx #FFB100 solid;
   line-height: 36rpx;
 }

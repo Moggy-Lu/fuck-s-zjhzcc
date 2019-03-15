@@ -61,11 +61,11 @@
   border-radius: 5px;
 }
 .info-container .info-main .bigImg image{
-  max-width: 600rpx;
-  max-height: 600rpx;
-  min-width: 210rpx;
-  min-height: 210rpx;
-  border-radius: 10px;
+  max-width: 354rpx;
+  max-height: 354rpx;
+  min-width: 264rpx;
+  min-height: 264rpx;
+  border-radius: 4px;
 }
 .info-container .info-bottom{
   display: flex;

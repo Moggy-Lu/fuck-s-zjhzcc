@@ -18,6 +18,7 @@ Component({
   data: {
     time:'',
     hasBig: false,
+    hasfit: null //是长图还是宽图
   },
 
 /**
@@ -47,6 +48,19 @@ Component({
       likeModel.like(like_or_cancel, this.data.infoItem.id, (res)=>{
         console.log(res)
       })
+    },
+    //获取图片原始宽和高
+    imageLoad: function (e) {
+      if(e.detail.width > e.detail.height){
+        this.setData({
+          hasfit:false
+        })
+      }
+      if (e.detail.width <= e.detail.height) {
+        this.setData({
+          hasfit: true
+        })
+      }
     },
     clickInfo: function(event) {
       wx.navigateTo({
