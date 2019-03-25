@@ -26,11 +26,11 @@ class HTTP {
           params.success && params.success(res.data)
         }
         else{
-          params.error && params.error(res)
+          params.fail && params.fail(res)
         }
       },
       fail: function(err) {
-        params.error && params.error(err)
+        params.fail && params.fail(err)
       },
       complete: function(res) {
         params.complete && params.complete(res)

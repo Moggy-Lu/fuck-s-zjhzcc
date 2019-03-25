@@ -1,5 +1,8 @@
 <!--pages/index/index.wxml-->
-<view class='container'>
+<view wx:if="{{!hasRequest}}">
+  <fail-cpt /> 
+</view>
+<view wx:if="{{hasRequest}}" class='container'>
   <view class='search-box'>
     <view class='search'>
       <view class='search-spot'></view>
@@ -20,19 +23,27 @@
   </view>
   <view class='icon-box'>
     <view bindtap='navCheckIn' class='icon-item checkIn-icon'>
-      <image src=""></image>
+      <view style='background:linear-gradient(316deg,rgba(252,110,110,1) 0%,rgba(247,163,123,1) 100%);' class='iconImg-box'>
+        <image style='width:38rpx; height:48rpx;' src="../../imgs/icon/active@3x.svg"></image>
+      </view>
       <view>活动</view>
     </view>
     <view bindtap='navScheduleIn' class='icon-item schedule-icon'>
-      <image src=""></image>
+      <view style='background:linear-gradient(317deg,rgba(74,161,255,1) 0%,rgba(68,209,238,1) 100%);' class='iconImg-box'>
+        <image style='width:40rpx; height:46rpx;' src="../../imgs/icon/classic@3x.svg"></image>
+      </view>
       <view>课表</view>
     </view>
     <view bindtap='navScheduleIn' class='icon-item leave-icon'>
-      <image src=""></image>
+      <view style='background:linear-gradient(315deg,rgba(162,84,247,1) 0%,rgba(191,146,233,1) 100%);' class='iconImg-box'>
+        <image style='width:46rpx; height:42rpx;' src="../../imgs/icon/unused@3x.svg"></image>
+      </view>
       <view>闲置</view>
     </view>
     <view bindtap='navScheduleIn' class='icon-item leave-icon'>
-      <image src=""></image>
+      <view style='background:linear-gradient(313deg,rgba(60,208,125,1) 0%,rgba(110,241,136,1) 100%);' class='iconImg-box'>
+        <image style='width:40rpx; height:40rpx;' src="../../imgs/icon/more@3x.svg"></image>
+      </view>
       <view>更多</view>
     </view>
   </view>
@@ -49,9 +60,15 @@
     </view>
   </view>
   <view class='information-box'>
-    <view class='information-main'>
-      <information-cpt wx:for="{{infoItem}}" infoItem="{{item}}" />
-    </view>
+    <swiper>
+      <block wx:for="{{tagList}}" wx:for-index="infoIndex">
+        <swiper-item>
+          <view class='information-main'>
+            <information-cpt catchfollow="onFollow" wx:for="{{infoItem}}" infoItem="{{item}}" />
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
 </view>
          

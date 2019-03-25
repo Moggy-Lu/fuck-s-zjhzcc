@@ -1,2 +1,11 @@
 <!--pages/myActive/myActive.wxml-->
-<text>pages/myActive/myActive.wxml</text>
+<view class='container'>
+  <view class='header'>
+    <view class='item active'>  我发起的</view>
+    <view class='item'>我参与的</view>
+    <view class='item'>我想去的</view>
+  </view>
+  <view class='active-main'>
+      <active-cpt wx:for="{{activeList}}" activeData="{{item}}" />
+    </view>
+</view>

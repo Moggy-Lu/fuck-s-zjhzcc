@@ -1,0 +1,93 @@
+<!--pages/createActive/createActive.wxml-->
+<view class='container'>
+  <form bindsubmit="formSubmit">
+    <view class='mainFormBox'>
+      <view class='item-box basicInfo-box'>
+        <view class='title-box'>
+          <view class='title-text'>基本信息 *</view>
+          <view class='title-icon'></view>
+        </view>
+        <view class='input-box'>
+          <view class='name'>活动名称</view>
+          <view class='input-item'>
+            <input name="name" placeholder-class='placeCss' placeholder='如：【初赛】“新生杯”演讲比赛'></input>
+          </view>
+        </view>
+        <view class='input-box'>
+          <view class='name'>组织者</view>
+          <view class='input-item'>
+            <input name="group" placeholder-class='placeCss' placeholder='请选择'></input>
+          </view>
+        </view>
+        <view class='input-box'>
+          <view class='name'>活动时间</view>
+          <view class='input-item'>
+            <view class='picker-box'>
+              <picker
+                mode="date"
+                value="{{date}}"
+                start="2019-01-01"
+                end="2050-01-01"
+                bindchange="bindDateChange">
+                <view class="{{time?'picker':'pickerDefalut'}}">{{date?date:"请选择日期"}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class='input-box'>
+          <view class='name'></view>
+          <view class='input-item'>
+            <view class='picker-box'>
+              <picker
+                mode="time"
+                value="{{time}}"
+                start="09:01"
+                end="21:01"
+                bindchange="bindTimeChange">
+                <view class="{{time?'picker':'pickerDefalut'}}">{{time?time:"请选择时间"}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class='input-box'>
+          <view class='name'>活动地点</view>
+          <view class='input-item'>
+            <input name="address" placeholder-class='placeCss' placeholder='请填写活动地点'></input>
+          </view>
+        </view>
+      </view>
+      <view class='item-box basicInfo-box'>
+        <view class='title-box'>
+          <view class='title-text'>扩展信息</view>
+          <view class='title-icon'></view>
+        </view>
+        <view class='prompt'>详细的信息可以增加活动上热门的概率哦！</view>
+        <view class='input-box'>
+          <view class='name'>活动标签</view>
+          <view class='input-item'>
+            <input name="tag" placeholder-class='placeCss' placeholder='如：A类竞赛、讲座'></input>
+          </view>
+        </view>
+        <view class='input-box'>
+          <view class='name'>活动简介</view>
+          <view class='input-item'>
+            <input name="introduce" placeholder-class='placeCss' placeholder='介绍一下活动滴更多内容叭！'></input>
+          </view>
+        </view>
+      </view>
+      <view class='item-box basicInfo-box'>
+        <view class='title-box'>
+          <view class='title-text'>海报</view>
+          <view class='title-icon'></view>
+        </view>
+        <view bindtap='addImg' wx:if="{{hasAdd}}" class='addPoster'>
+          <image src='../../imgs/icon/add.png'></image>
+        </view>
+        <view wx:if="{{!hasAdd}}" class='Poster'>
+          <image src='{{img}}'></image>
+        </view>
+      </view>
+    </view>
+    <button formType="submit">立即发起</button>
+  </form>
+</view>

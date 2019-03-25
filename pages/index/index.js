@@ -1,6 +1,10 @@
 // pages/index/index.js
 import { InfoModel} from '../../models/information.js'
 let infoModule = new InfoModel()
+import { UserModel } from '../../models/user.js'
+let userModel = new UserModel()
+import { ScheduleModel } from '../../models/classSchedule.js';
+var scheduleModel = new ScheduleModel()
 const app = new getApp()
 Page({
 
@@ -10,11 +14,11 @@ Page({
   data: {
     //测试数据
     itemList : [{
-      url : '../../imgs/test/banner@1.png'
+      url: 'https://picture.zjhzcc.club//2ecc9dab1905ea86688e88829e3827.png'
     }, {
-        url: '../../imgs/test/banner@2.png'
+        url: 'https://picture.zjhzcc.club//bc96db33211fa97df93e0eca850134.png'
       }, {
-        url: '../../imgs/test/banner@3.png'
+        url: 'https://picture.zjhzcc.club//0d7c622079f6e4ed4b8db7b4059000.png'
       }],
       tagList: [ {
           status: true,
@@ -26,6 +30,21 @@ Page({
       infoItem: [],
       page:1,
       hasMoreData:true,   //是否有更多的数据
+      hasRequest: true,
+  },
+  //修改关注按钮状态
+  onFollow: function(event){
+    let follow = event.detail[0].follow
+    let uid = event.detail[1].uid
+    let list = this.data.infoItem
+    for(let i in list){
+      if (list[i].uid == uid){
+        list[i].follow = follow
+      }
+    }
+    this.setData({
+      infoItem: list
+    })
   },
   //跳转到签到页面
   navCheckIn: function(res){
@@ -34,8 +53,18 @@ Page({
     })
   },
   navScheduleIn: function (res) {
-    wx.navigateTo({
-      url: '../classSchedule/classSchedule'
+    scheduleModel.checkSchool((res) => {
+      console.log(res)
+      if(res){
+        wx.navigateTo({
+          url: '../classSchedule/classSchedule'
+        })
+      }
+      else{
+        wx.navigateTo({
+          url: '../bindClassic/bindClassic'
+        })
+      }
     })
   },
 
@@ -58,6 +87,9 @@ Page({
     }, (res)=>{
       wx.hideNavigationBarLoading()
       wx.stopPullDownRefresh()
+    })
+    userModel.getNotice((res)=>{
+      console.log(res)
     })
   },
   onLoad: function (options) {
@@ -99,6 +131,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log('show')
     if (!app.globalData.authorize){
       wx.redirectTo({
         url: '../../pages/first/first',

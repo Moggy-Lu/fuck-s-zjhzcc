@@ -2,26 +2,24 @@
 <view>
   <view bindtap='onActiveDetail' class='active-contianer'>
     <view class='active-image'>
-      <image src='{{activeData.image}}'></image>
+      <image mode='aspectFill' src='{{activeData.image}}'></image>
     </view>
     <view class='active-message'>
-      <view class='active-title'>{{activeData.e_name}}</view>
-      <view class='active-main'>
-        <view class='active-item'>
-          <view class='item-icon' style='border-color: #F973D5;'></view>
-          <view class='active-text'>{{activeData.group}}</view>
+      <view class='message-header'>
+        <view class='.active-title'>{{activeData.e_name}}</view>
+        <view class='active-tag'>
+          <view class='item' wx:for="{{activeData.e_type}}">{{item}}
         </view>
-        <view class='active-item'>
-          <view class='item-icon' style='border-color: #44D1EE;'></view>
-          <view class='active-text'>{{activeData.startup_time}}</view>
-        </view>
-        <view class='active-item'>
-          <view class='item-icon' style='border-color: #5B67FD;'></view>
-          <view class='active-text'>{{activeData.address}}</view>
         </view>
       </view>
-      <view class='active-introduction'>{{activeData.remark}}</view>
-      <view class='active-tag'></view>
+      <view class='active-main'>
+        <view class='main-message'>
+          <view class='active-text'>{{activeData.group}}</view>
+          <view class='active-text'>{{activeData.startup_time}}</view>
+          <view class='active-text'>{{activeData.address}}</view>
+        </view> 
+        <want-cpt bindtap="joinActiveBind" number="{{23}}" />
+      </view>
     </view>
   </view>
 </view>

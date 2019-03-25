@@ -14,6 +14,7 @@
 }
 .info-container .info-header .user-main{
   display: flex;
+  color: #333;
 }
 .info-container .info-header .user-info{
   display: flex;
@@ -40,25 +41,68 @@
   border:1px solid rgba(255,177,0,1);
   border-radius:38rpx;
 }
+.info-container .info-header .delete-btn{
+  font-size: 26rpx;
+  color: red;
+  padding: 16rpx 24rpx;
+  border:1px solid red;
+  border-radius:38rpx;
+}
 .info-container .info-main{
-  margin: 0px 12px 12px 12px;
+  margin: 0px 12px;
   font-size: 16px;
-  margin-bottom: 12px;
 }
 .info-container .info-main .text-main{
   font-weight: 400;
   margin-bottom: 12px;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  align-content: center;
+  line-height: 24px;
+  color: #333;
+  font-size: 16px;
+}
+.subreply-name{
+  color: #039be5;
+  line-height: 36rpx;
+  white-space: nowrap;
+  height: 36rpx;
+  float: left;
+}
+.info-container .info-main .text-main .text-tag{
+  color: #039be5;
+  white-space: nowrap;
+  height: 36rpx;
+  float: left;
 }
 .info-container .info-main .imgs-main{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
+.info-container .info-main .imgs-main .img-box{
+  position: relative;
+}
+.info-container .info-main .imgs-main .img-box span{
+  font-size: 20rpx;
+  color: #fff;
+  padding: 6rpx 14rpx;
+  background: rgba(55,55,55,0.7);
+  position: absolute;
+  z-index: 99;
+  top: 8rpx;
+  right: 8rpx;
+  border-radius: 10rpx;
+}
 .info-container .info-main .smallImg image{
   width: 210rpx;
   height: 210rpx;
   margin: 2px;
   border-radius: 5px;
+  display: block;
 }
 .info-container .info-main .bigImg image{
   max-width: 354rpx;
@@ -75,5 +119,4 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
-  margin-bottom: 50rpx;
 }

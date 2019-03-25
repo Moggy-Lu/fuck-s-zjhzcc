@@ -4,12 +4,12 @@
   color: #999;
   font-size: 14px;
   text-align: center;
+  padding: 32rpx;
+  justify-content: center;
 }
 .container image{
-  width:18px;
-  height:18px;
-  border:2px solid rgba(153,153,153,1);
-  border-radius: 50%;
+  width:40rpx;
+  height:40rpx;
 }
 .container .title{
   margin-left: 4px;

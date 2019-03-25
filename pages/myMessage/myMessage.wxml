@@ -1,0 +1,12 @@
+<!--pages/myMessage/myMessage.wxml-->
+<view class='container'>
+  <view class='header'>
+    <view bindtap='bindMyAcitve' class='item {{show==0?"active":""}}'>全部</view>
+    <view bindtap='bindMyAcitve' class='item {{show==1?"active":""}}'>原创</view>
+    <view bindtap='bindMyLike' class='item {{show==2?"active":""}}'>赞</view>
+    <view bindtap='bindMyForward' class='item {{show==3?"active":""}}'>转发</view>
+  </view>
+  <view class='information-main'>
+      <information-cpt bind:delete="bindDelete" wx:for="{{infoItem}}" hasMe="{{true}}" infoItem="{{item}}" />
+    </view>
+</view>

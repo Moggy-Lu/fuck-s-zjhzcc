@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "information-cpt" : "/components/information/index"
+    "information-cpt" : "/components/information/index",
+    "fail-cpt": "/components/failPage/index"
   }
 }

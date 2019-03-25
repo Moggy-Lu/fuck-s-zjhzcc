@@ -9,36 +9,7 @@ Page({
   data: {
     schedule: null,
     week: null,
-    dateList: [
-      {
-        num:1,
-        week:'一'
-      },
-      {
-        num: 2,
-        week: '二'
-      },
-      {
-        num: 3,
-        week: '三'
-      },
-      {
-        num: 4,
-        week: '四'
-      },
-      {
-        num: 5,
-        week: '五'
-      },
-      {
-        num: 6,
-        week: '六'
-      },
-      {
-        num: 0,
-        week: '日'
-      },
-    ]
+    dateList: ['日', '一', '二', '三', '四', '五', '六']
   },
   //课程信息格式切换
   regClassicInfo: function (message) {
@@ -67,6 +38,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    var that = this
     let now = new Date().getDay()
     this.setData({
       now : now
@@ -76,25 +51,30 @@ Page({
       title: '课表查询'
     })
     scheduleModel.getClass((res)=>{
-      let schedule = Object.keys(res).map(function(e){return res[e]})
-      let week = this.regClassicInfo(schedule[now])
+      let schedule = Object.keys(res).map(function(e){
+        return that.regClassicInfo(res[e])
+        })
       this.setData({
-        schedule: schedule,
-        week : week
+        schedule: schedule
       })
-      
+      wx.hideLoading()
+    }, (err)=>{
+      console.log(err)
     })
   },
   //点击日期切换
   onWeekBind : function(options){
     var that = this
-    let index = options.target.dataset.index == 6 ? 0 : options.target.dataset.index+1
+    let index = options.target.dataset.index
     this.setData({
       now: index
     })
-    let week = this.regClassicInfo(that.data.schedule[index])
+  },
+  //滑动滑块切换日期
+  changeWeek: function(options){
+    let num = options.detail.current
     this.setData({
-      week: week
+      now: num
     })
   },
 

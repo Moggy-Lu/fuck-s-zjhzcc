@@ -30,6 +30,45 @@ class UserModel extends HTTP {
       }
     })
   }
+  //获取自己评论过的子评论
+  getMySubReply(sCallBack){
+    this.request({
+      url: '/message/getMySubReply',
+      success: (res) => {
+        sCallBack && sCallBack(res.data)
+      }
+    })
+  }
+  //关注与取消关注其他用户
+  onFollow(data, sCallBack) {
+    this.request({
+      url: '/user/follow',
+      method:'POST',
+      data: data,
+      success: (res) => {
+        sCallBack && sCallBack(res)
+      }
+    })
+  }
+  //获取自己赞过的动态
+  getMyLike(sCallBack){
+    this.request({
+      url: '/message/getMyLike',
+      success: (res) => {
+        sCallBack && sCallBack(res.data)
+      }
+    })
+  }
+  //获取通知
+  getNotice(sCallBack){
+    this.request({
+      url: '/user/getNotice',
+      // method:'POST',
+      success: (res) => {
+        sCallBack && sCallBack(res)
+      }
+    })
+  }
   //上传昵称和头像
   onuserNickname(nickname, icon, sCallBack, fail){
     this.request({

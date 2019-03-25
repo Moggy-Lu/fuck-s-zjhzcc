@@ -4,6 +4,21 @@ class ActiveModel extends HTTP {
   constructor() {
     super()
   }
+  //查看自己发起的活动
+  onMyActiveList(sCallBack, complete){
+    this.request({
+      url: '/event/getAdminEvent',
+      success: (res) => {
+        sCallBack && sCallBack(res)
+      },
+      fail: (err) => {
+        console.log(err)
+      },
+      complete: (res) => {
+        complete && complete(res)
+      }
+    })
+  }
   //发起新的活动
   createNewActive(data, sCallBack, complete) {
     this.request({
@@ -37,6 +52,37 @@ class ActiveModel extends HTTP {
       }
     })
   }
+  //加入活动
+  joinActive(eid, scallBack){
+    this.request({
+      url: '/event/joinEvent',
+      method: 'POST',
+      data: {
+        eid: eid
+      },
+      success: (res) => {
+        scallBack && scallBack(res)
+      },
+      fail: (err) => {
+        console.log(err)
+      }
+    })
+  }
+  //扫描二维码签到
+  onQrCodeUrl(url, scallBack){
+    let token = wx.getStorageSync('token')
+    wx.request({
+      url: url,
+      header: {
+        'content-type': 'application/json',
+        'token': token
+      },
+      method: 'POST',
+      success: function (res) {
+        scallBack && scallBack(res)
+      }
+    })
+  }
   //开始签到并获取签到次数
   onStartSign(eid, sCallBack, complete) {
     this.request({
@@ -66,6 +112,15 @@ class ActiveModel extends HTTP {
       },
       complete: (res) => {
         complete && complete(res)
+      }
+    })
+  }
+  stopSign(sCallBack){
+    this.request({
+      url: '/event/stopSign',
+      method: 'POST',
+      success: (res) => {
+        sCallBack && sCallBack(res)
       }
     })
   }

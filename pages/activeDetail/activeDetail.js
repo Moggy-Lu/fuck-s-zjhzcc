@@ -1,6 +1,8 @@
 // pages/activeDetail/activeDetail.js
 import { UserModel } from '../../models/user.js'
 var userModel = new UserModel()
+import { ActiveModel } from '../../models/active.js'
+var activeModel = new ActiveModel()
 Page({
 
   /**
@@ -10,6 +12,10 @@ Page({
     activeData: null,
     uid: null,
     isMe:false,
+    isBegin : false,
+    baseUrl: 'https://tp5.zjhzcc.club/',
+    hiddenModel: false,
+    qrCodeUrl: '',
   },
 
   /**
@@ -26,6 +32,31 @@ Page({
     })
   },
 
+  //开始活动签到
+  beginActive: function(){
+    activeModel.onStartSign(this.data.activeData.id, (res)=>{
+      console.log(res)
+      this.setData({
+        isBegin: true,
+      })
+    })
+  },
+  //获取签到二维码
+  getQrCode: function(){
+    activeModel.getQrcode(this.data.activeData.id, 1, (res)=>{
+      let url = res.url
+      url = this.data.baseUrl + url
+      this.setData({
+        hiddenModel: true,
+        qrCodeUrl: url
+      })
+    })
+  },
+  onHiddenModel: function(){
+    this.setData({
+      hiddenModel: false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

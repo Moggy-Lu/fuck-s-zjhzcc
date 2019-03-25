@@ -36,7 +36,7 @@ class Token {
     wx.login({
       success : function(res){
         wx.request({
-          url: 'http://47.102.108.60/api/v1/token/user',
+          url: 'https://tp5.zjhzcc.club/api/v1/token/user',
           method: 'POST',
           data: {
             code: res.code

@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "comment-cpt": "/components/comment/comment@icon/index",
+    "forward-cpt": "/components/forward/index",
+    "want-cpt": "/components/want/index"
+  }
 }

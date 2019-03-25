@@ -18,7 +18,8 @@ Page({
       first: '',
       second: '',
       third: '',
-      status: false
+      status: false,
+      qrCodeUrl: '',
     },
     activeText:'',
   },
@@ -36,100 +37,11 @@ Page({
       },
     })
   },
-  //实时获取活动名称字段
-  bindInputFirst:function(e){
-    let data = this.data.hasText
-    data.first = e.detail.value
-    if(data.first && data.second && data.third){
-      data.status = true
-    }
-    this.setData({
-      hasText: data
-    })
-  },
-  bindInputSecond: function (e) {
-    let data = this.data.hasText
-    data.second = e.detail.value
-    if (data.first && data.second && data.third) {
-      data.status = true
-    }
-    this.setData({
-      hasText: data
-    })
-  },
-  bindInputThird: function (e) {
-    let data = this.data.hasText
-    data.third = e.detail.value
-    if (data.first && data.second && data.third) {
-      data.status = true
-    }
-    this.setData({
-      hasText: data
-    })
-  },
-  //提交表单
-  formSubmit(e){
-    var that = this
-    wx.showLoading({
-      title: '上传中',
-    })
-    let imgUrl = this.data.img
-    wx.uploadFile({
-      url: 'http://47.102.108.60/api/v1/message/uploadImages',
-      filePath: imgUrl,
-      name: 'file',
-      success: (res) => {
-        let url = JSON.parse(res.data).msg
-        let code = res.statusCode.toString()
-        let starCode = code.charAt(0)
-        if (starCode == '2') {
-          let data = e.detail.value
-          let type = data.type ? data.type : "default"
-          let address = data.address ? data.address : "未知"
-          let params = {
-            name: data.activeName,
-            type: type,
-            address: address,
-            group: data.admin,
-            registerStart_time: 0,
-            registerEnd_time: 0,
-            startUp_time: data.checkTime,
-            end_time: "",
-            status: 0,
-            prepare_num: 0,
-            actual_num: 0,
-            remark: data.remark,
-            image:  url,
-          }
-          activeModel.createNewActive(params, (res) => {
-            wx.hideLoading()
-            wx.showToast({
-              title: '发布成功',
-            })
-            this.onPullDownRefresh()
-          })
-        }
-      },
-      fail: (err) => {
-        console.log(err)
-      }
-    })
-  },
   //跳转到创建新活动页面
   showCreateActive:function(){
-    this.setData({
-      createShow:!this.data.createShow
+    wx.navigateTo({
+      url: '../createActive/createActive',
     })
-    //动态效果
-    // var animation = wx.createAnimation({
-    //   duration: 1000,
-    //   timingFunction: 'ease',
-    //   delay: 1000
-    // })
-    // animation.scaleY(0.1).step()
-    // this.setData({
-    //   animationData: animation.export()
-    // })
   },
   onMyActive: function () {
     wx.navigateTo({
@@ -140,7 +52,9 @@ Page({
   addActiveBind: function () {
     wx.scanCode({
       success(res) {
-        console.log(res)
+        activeModel.onQrCodeUrl(res.result, (res)=>{
+          console.log(res)
+        })
       }
     })
   },

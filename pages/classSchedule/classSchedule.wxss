@@ -11,12 +11,12 @@ page{
 .container .classic-main{
   display: flex;
   flex-direction: column;
-  margin: 24rpx 24rpx 0rpx 24rpx;
 }
 .container .classic-main .week-box{
   display: flex;
   justify-content: space-around;
   padding: 24rpx 0;
+  margin: 24rpx 24rpx 0rpx 24rpx;
 }
 .container .classic-main .week-box .week-item{
   width: 72rpx;
@@ -32,9 +32,13 @@ page{
   border-radius: 50%;
   color: #fff;
 }
+swiper{
+  height: 1000rpx;
+}
 .container .classic-main .classicList{
   display: flex;
   flex-direction: column;
+  padding-left: 24rpx;
 }
 .container .classic-main .classicList .classic-text{
   background:rgba(255,255,255,1);

@@ -7,51 +7,61 @@
   margin-top: 24rpx;
 }
 .active-contianer .active-image{
-  flex: 1;
   margin-top: 24rpx;
-  padding-left: 24rpx;
 }
 .active-contianer .active-image image{
-  width: 180rpx;
-  height: 250rpx;
-  background: #eee;
-  border-radius: 10rpx;
+  width: 250rpx;
+  height: 350rpx;
+  border-radius: 20rpx;
 }
 .active-contianer .active-message{
-  flex: 2;
   margin-top: 24rpx;
+  margin-left: 24rpx;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: stretch;
+  width: 100%;
 }
-.active-contianer .active-message .active-title{
-  font-size:32rpx;
-  font-family:PingFang SC;
+.active-contianer .active-message .message-header{
+  display: flex;
+  flex-direction: column;
+}
+.active-contianer .active-message .active-tag{
+  display: flex;
+  flex-direction: row;
+}
+.active-contianer .active-message .active-tag .item{
+  padding: 0rpx 6rpx;
+  font-size:20rpx;
   font-weight:500;
-  line-height:20px;
+  line-height:40rpx;
+  color:rgba(254,168,38,1);
+  border:1px solid rgba(254,168,38,1);
+  border-radius:4px;
+  margin-right: 16rpx;
+}
+.active-contianer .active-message .message-header .active-title{
+  font-size:32rpx;
+  font-weight:600;
+  line-height:24px;
   margin-bottom: 16rpx;
 }
 .active-contianer .active-main{
   display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 8rpx;
+  left: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+.active-contianer .active-main .main-message{
+  display: flex;
   flex-direction: column;
 }
-.active-contianer .active-main .active-item{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 8rpx;
-}
-.active-contianer .active-main .active-item .item-icon{
-  width: 12rpx;
-  height: 12rpx;
-  border: 2px solid;
-  border-radius: 20rpx;
-  background: rgba(255,255,255,1);
-  margin-right: 8rpx;
-}
-.active-contianer .active-main .active-item .active-text{
-  color: #333;
-  font-size: 24rpx;
-  line-height: 36rpx;
-}
-.active-contianer .active-message .active-introduction{
-  color: #999;
-  font-size: 24rpx;
+.active-contianer .active-main .main-message .active-text{
+  color:rgba(79,79,79,1);
+  font-size: 26rpx;
+  line-height: 44rpx;
 }

@@ -4,6 +4,7 @@ class InfoModel extends HTTP{
   constructor(){
     super()
   }
+  //获取动态列表
   getInfoList(page, sCallBack, complete) {
     this.request({
       url: '/message/getMessage',

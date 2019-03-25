@@ -1,11 +1,7 @@
 /* pages/articleDetail/articleDetail.wxss */
-page{
-  background:rgba(242,242,242,1);
-}
 .detail-container{
   background: #fff;
-  margin: 24rpx;
-  border-radius:10px;
+  margin: 32rpx;
 }
 .detail-container .article-main .article-header .user-main{
   display: flex;
@@ -14,7 +10,7 @@ page{
 .detail-container .article-main .article-header image{
   width: 40px;
   height: 40px;
-  margin: 24rpx 16rpx 24rpx 24rpx;
+  margin: 0rpx 16rpx 24rpx 0rpx;
   border-radius: 50%;
 }
 .detail-container .article-main .article-header{
@@ -40,10 +36,8 @@ page{
   padding: 16rpx 24rpx;
   border:1px solid rgba(255,177,0,1);
   border-radius:38rpx;
-  margin-right: 32rpx;
 }
 .detail-container .article-main .article{
-  margin:0rpx 24rpx 24rpx 24rpx;
   font-size:32rpx;
   line-height:24px;
   color:rgba(51,51,51,1);
@@ -87,7 +81,6 @@ page{
   display: flex;
   width: 100%;
   justify-content: space-around;
-  padding-bottom: 24rpx;
   border-bottom: 1px solid rgba(242,242,242,1);
 }
 .detail-container .comment-main{

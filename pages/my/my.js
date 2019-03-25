@@ -33,8 +33,24 @@ Page({
       }
     })
   },
+  //跳转到我的活动页面
+  bindMyActiveOn: function(){
+    wx.navigateTo({
+      url: '../myActive/myActive',
+    })
+  },
+  //跳转到我的动态页面
+  bindMyMessageOn: function(){
+    wx.navigateTo({
+      url: '../myMessage/myMessage',
+    })
+  },
   //页面初始化
   _init(){
+    //页面标题
+    wx.setNavigationBarTitle({
+      title: '我的'
+    })
     if (app.globalData.userInfo) {
       userModel.getMyMessage(1, (res) => {
         this.setData({

@@ -4,7 +4,7 @@ class ScheduleModel extends HTTP {
   constructor() {
     super()
   }
-  bindSchool(account, password, sCallBack, complete) {
+  bindSchool(account, password, sCallBack, fail, complete) {
     this.request({
       url: '/user/bindSchool',
       data: {
@@ -17,17 +17,39 @@ class ScheduleModel extends HTTP {
       },
       complete: (res) => {
         complete && complete(res)
+      },
+      fail: (err) => {
+        fail && fail(err)
       }
     })
   }
-  getClass(sCallBack, complete) {
+  //查看用户信息
+  checkSchool(sCallBack, fail, complete){
     this.request({
-      url: '/school/getClass',
+      url: '/user/checkSchool',
       success: (res) => {
         sCallBack && sCallBack(res)
       },
       complete: (res) => {
         complete && complete(res)
+      },
+      fail: (err) => {
+        fail && fail(err)
+      }
+    })
+  }
+  getClass(sCallBack, fail, complete) {
+    this.request({
+      url: '/school/getClass',
+      success: (res) => {
+        console.log('success')
+        sCallBack && sCallBack(res)
+      },
+      complete: (res) => {
+        complete && complete(res)
+      },
+      fail: (err)=>{
+        fail && fail(err)
       }
     })
   }

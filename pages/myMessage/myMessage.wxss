@@ -1,0 +1,19 @@
+/* pages/myMessage/myMessage.wxss */
+.container .header{
+  display: flex;
+  border-bottom: 16rpx #fff solid; 
+  padding-left: 32rpx;
+  align-items: center;
+}
+.container .header .item{
+  margin-right: 48rpx;
+  font-size: 32rpx;
+  color:rgba(153,153,153,1);
+  margin-top: 24rpx;
+}
+.container .header .active{
+  color:rgba(51,51,51,1);
+  border-bottom: 6rpx #FFB100 solid;
+  font-weight: 600;
+  font-size: 40rpx;
+}

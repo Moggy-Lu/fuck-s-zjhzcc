@@ -1,6 +1,8 @@
 // components/information/index.js
 import { LikeModel } from '../../models/like.js'
 import {Util} from '../../utils/util.js'
+import { UserModel } from '../../models/user.js'
+var userModel = new UserModel()
 let util = new Util()
 let likeModel = new LikeModel()
 Component({
@@ -9,7 +11,12 @@ Component({
    */
   properties: {
     infoItem: Object,
-    like: Boolean
+    like: Boolean,
+    hasMe: {
+      type: Boolean,
+      value: false,
+      superHighIMg: false //超长图标志位
+    },
   },
 
   /**
@@ -43,6 +50,38 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    //删除自己的信息
+    onDeleteInfo: function() {
+      var that = this
+      wx.showModal({
+        title: '提示',
+        content: '是否删除这条动态',
+        success(res) {
+          if (res.confirm) {
+            let id = that.data.infoItem.id
+            userModel.deleteMessage(id, (res) => {
+              that.triggerEvent('delete', {
+                hasDelete: true
+              }, {})
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    },
+    //关注与取消关注
+    onFollowUser: function(event) {
+      let data = { follow: this.data.infoItem.uid}
+      userModel.onFollow(data, (res)=>{
+        let follow = !this.data.infoItem.follow
+        let uid = this.data.infoItem.uid
+        this.triggerEvent('follow', [{
+          follow: follow
+        },{uid: uid}], {})
+      })
+    },
+    //点赞
     onLike: function (event) {
       let like_or_cancel = event.detail.behavior
       likeModel.like(like_or_cancel, this.data.infoItem.id, (res)=>{
@@ -59,6 +98,11 @@ Component({
       if (e.detail.width <= e.detail.height) {
         this.setData({
           hasfit: true
+        })
+      }
+      if (e.detail.width*2.5 <= e.detail.height){
+        this.setData({
+          superHighIMg: true
         })
       }
     },

@@ -9,13 +9,14 @@ class ReleaseModel extends HTTP{
     let success_imgs = []
     for (let u in imgUrlList) {
       wx.uploadFile({
-        url: 'http://47.102.108.60/api/v1/message/uploadImages',
+        url: 'https://tp5.zjhzcc.club/api/v1/message/uploadImages',
         filePath: imgUrlList[u],
         name: 'file',
         success: (res) => {
           let code = res.statusCode.toString()
           let starCode = code.charAt(0)
           if (starCode=='2'){
+            console.log(res)
             sCallBack && sCallBack(res)
           }
         },
@@ -36,6 +37,7 @@ class ReleaseModel extends HTTP{
         data: data,
         method: 'POST',
         success: (res) => {
+          console.log(res)
           sCallBack && sCallBack(res)
         }
       })

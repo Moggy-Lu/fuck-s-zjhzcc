@@ -2,6 +2,8 @@
 .container{
   display: flex;
   text-align: center;
+  padding: 32rpx;
+  justify-content: center;
 }
 .container image{
   width:40rpx;

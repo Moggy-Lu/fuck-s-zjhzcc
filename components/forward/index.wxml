@@ -1,6 +1,6 @@
 <!--components/forward/index.wxml-->
 <view class="container" bind:tap="onLike">
-  <image src="" />
+  <image src="images/forward.png" />
   <view class='title'>转发</view>
 </view>
 

@@ -8,19 +8,42 @@ Page({
    */
   data: {
     update_img_urlList  :[],
-    hidden              :true,
     imageNumber         :9,
     textareaText        :"",
     inputValue          :"",
-    success_imgsList    :[]
+    success_imgsList    :[],
+    tagList: ['#兼职', '#求助', '#失物招领', '#推广'],
+    hasTag: '',
+  },
+  //添加tag
+  addTag: function(e){
+    let index = e.target.dataset.index
+    let tag = this.data.tagList[index]
+    let tagList = this.data.tagList
+    tagList.splice(index, 1)
+    this.setData({
+      hasTag: tag,
+      tagList: tagList
+    })
+    
+  },
+  //删除tag
+  deleteTag: function(e){
+    let tagList = this.data.tagList
+    tagList.push(this.data.hasTag)
+    this.setData({
+      tagList: tagList,
+      hasTag: ''
+    })
   },
   //删除图片
   catchDeleteOn:function(e){
     let index = e.currentTarget.dataset.index
     this.data.update_img_urlList.splice(index, 1)
+    let num = this.data.imageNumber+1
     this.setData({
       update_img_urlList: this.data.update_img_urlList,
-      imageNumber:this.imageNumber++
+      imageNumber:num
     })
   },
   //获取动态的文字
@@ -40,16 +63,6 @@ Page({
         that.setData({
           imageNumber : that.data.imageNumber - num
         })
-        if (that.data.imageNumber == 0){
-          that.setData({
-            hidden : false
-          })
-        }
-        else {
-          that.setData({
-            hidden: true
-          })
-        }
         let url = that.data.update_img_urlList
         for (let u in res.tempFilePaths){
           url.push(res.tempFilePaths[u])
@@ -62,11 +75,11 @@ Page({
   },
   //发布动态
   updateRelease: function(){
-    if (this.data.textareaText != ""){
+    if (this.data.textareaText || this.data.update_img_urlList){
       let imgs = this.data.update_img_urlList
       let updata = {
         text: this.data.textareaText,
-        tag: '1',
+        tag: this.data.hasTag?this.data.hasTag:'无',
         address: '2',
         imgUrl: imgs
       }

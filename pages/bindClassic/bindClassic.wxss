@@ -1,0 +1,31 @@
+/* pages/bindClassic/bindClassic.wxss */
+.container{
+  width: 100%;
+}
+.container .bindClassicBox{
+  margin: 120rpx 80rpx 80rpx 80rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 12rpx 40rpx rgba(0,0,0,0.1);
+  border-radius:20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.container .bindClassicBox .item{
+  margin: 40rpx 0rpx 40rpx 40rpx;
+  border-bottom: 2rpx rgba(242,242,242,1) solid;
+}
+.container .bindClassicBox .item .title{
+  margin-bottom: 32rpx;
+}
+.container .bindClassicBox .item input{
+  margin-bottom: 32rpx;
+}
+.container button{
+  background:rgba(255,177,0,1);
+  color: #fff;
+  border-radius: 0;
+  margin: 0rpx 32rpx;
+}
+button::after{
+  border: none;
+}

@@ -2,7 +2,7 @@
 <view class='container'>
   <view class='space-box'></view>
   <view class='icon-box'>
-    <view bindtap='showCreateActive' class='{{createShow?"click ":""}}icon-item create-box'>
+    <view bindtap='showCreateActive' class='icon-item create-box'>
       <image src=''></image>
       <view class='icon-title'>发起活动</view>
     </view>
@@ -11,75 +11,6 @@
       <view class='icon-title'>现场签到</view>
     </view>
   </view>
-  <form bindsubmit="formSubmit">
-    <view animation="{{animationData}}" wx:if="{{createShow}}" class='createActive-box'>
-      <view class='create-box'>
-        <view class='option-item'>
-          <view class='option-icon' style='border-color: #4AA1FF;'></view>
-          <view class='optionInfo'>
-            <view class='option-text'>活动名称：</view>
-            <input bindinput="bindInputFirst" placeholder-style='font-size:12rpx;' placeholder='必填' name="activeName"></input>
-          </view>
-        </view>
-        <view class='option-item'>
-          <view class='option-icon' style='border-color: #FEA826;'></view>
-          <view class='optionInfo'>
-            <view class='option-text'>活动简介：</view>
-            <input bindinput="bindInputSecond" name="remark" placeholder='必填' placeholder-style='font-size:12rpx;'></input>
-          </view>
-        </view>
-        <view class='option-item'>
-          <view class='option-icon' style='border-color: #B176EF;'></view>
-          <view class='optionInfo'>
-            <view class='option-text'>组织者：</view>
-            <input bindinput="bindInputThird" name="admin" placeholder='必填' placeholder-style='font-size:12rpx;'></input>
-          </view>
-        </view>
-        <view class='option-item'>
-          <view class='option-icon' style='border-color: #54E082;'></view>
-          <view class='optionInfo'>
-            <view class='option-text'>活动时间：</view>
-            <input name="startTime"></input>
-          </view>
-        </view>
-        <view class='option-item'>
-          <view class='option-icon' style='border-color: #44D1EE;'></view>
-          <view class='optionInfo'>
-            <view class='option-text'>活动地点：</view>
-            <input name="address"></input>
-          </view>
-        </view>
-        <view class='option-item'>
-          <view class='option-icon' style='border-color: #5B67FD;'></view>
-          <view class='optionInfo'>
-            <view class='option-text'>关键词：</view>
-            <input name="type"></input>
-          </view>
-        </view>
-        <view class='option-item'>
-          <view class='option-icon' style='border-color: #FCD500;'></view>
-          <view class='optionInfo'>
-            <view class='option-text'>签到开始时间：</view>
-            <input name="checkTime" style='width:420rpx;'></input>
-          </view>
-        </view>
-        <view class='option-item'>
-          <view class='option-icon' style='border-color: #F973D5;'></view>
-          <view class='optionInfo'>
-            <view class='option-text'>添加海报：</view>
-            <view bindtap='addImg' wx:if="{{hasAdd}}" class='addBtn'>
-              <view class='vertical'></view>
-              <view class='transverse'></view>
-            </view>
-          </view>
-        </view>
-        <view wx:if="{{!hasAdd}}" class='img-box'>
-          <image src='{{img}}'></image>
-        </view>
-      </view>
-      <button form-type='{{hasText.status?"submit":""}}' style='{{hasText.status?"background:rgba(74,161,255,1);":""}}'>发起活动</button>
-    </view>
-  </form>
   <view class='allActive-box'>
     <view class='title-box'>
       <view class='item active'>热门</view>

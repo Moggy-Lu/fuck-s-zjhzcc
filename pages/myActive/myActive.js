@@ -14,18 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //查看自己历史活动
-    activeModel.onAllMyActive(1, (res)=>{
-      console.log(res)
+    activeModel.onMyActiveList((res)=>{
       this.setData({
-        activeList:res.data
+        activeList: res.Event
       })
-    })
-    // activeModel.onStartSign(13, (res)=>{
-    //   console.log(res)
-    // })
-    activeModel.getQrcode(13, 1, (res)=>{
-      console.log(res)
     })
   },
 

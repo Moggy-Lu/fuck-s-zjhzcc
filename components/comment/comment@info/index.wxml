@@ -15,8 +15,9 @@
   </view>
   <view wx:if="{{isSubreply}}" class='subreply-box'>
     <view class='subreply-item' wx:for="{{commentData.subreply.data}}">
+      <p class='subreply-text'>
       <view class='subreply-name'>{{item.nickname_from}}</view>
-      <view class='subreply-text'>：{{item.text}}</view>
+      ：{{item.text}}</p>
     </view>
   </view>
 </view>

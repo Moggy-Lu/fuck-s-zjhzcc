@@ -6,6 +6,10 @@ Component({
   properties: {
     mid:Number,
     count:Number,
+    hasHidden:{
+      type:Boolean,
+      value: true,
+    },
   },
 
   /**
@@ -20,9 +24,11 @@ Component({
    */
   methods: {
     oncomment: function(event) {
-      wx.navigateTo({
-        url: '/pages/articleDetail/articleDetail?focus=true&&id='+this.properties.mid,
-      })
+      if(this.properties.hasHidden){
+        wx.navigateTo({
+          url: '/pages/articleDetail/articleDetail?focus=true&&id=' + this.properties.mid,
+        })
+      }
     }
   }
 })

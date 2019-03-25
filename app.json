@@ -8,7 +8,10 @@
     "pages/classSchedule/classSchedule",
     "pages/myActive/myActive",
     "pages/first/first",
-    "pages/activeDetail/activeDetail"
+    "pages/activeDetail/activeDetail",
+    "pages/createActive/createActive",
+    "pages/myMessage/myMessage",
+    "pages/bindClassic/bindClassic"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFB100",
@@ -20,27 +23,28 @@
     "backgroundColor": "#eee"
   },
   "tabBar": {
-    "selectedColor": "#000",
-    "borderStyle": "white",
-    "color": "#888",
+    "selectedColor": "#F9C748",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "color": "#000",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "imgs/icon/home-default.png",
-        "selectedIconPath": "imgs/icon/home.png"
+        "iconPath": "imgs/icon/home-default@3x.png",
+        "selectedIconPath": "imgs/icon/home@3x.png"
       },
       {
         "pagePath": "pages/release/release",
         "text": "发布",
-        "iconPath": "imgs/icon/release.png",
-        "selectedIconPath": "imgs/icon/release.png"
+        "iconPath": "imgs/icon/release-default@3x.png",
+        "selectedIconPath": "imgs/icon/release@3x.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
         "iconPath": "imgs/icon/my-default.png",
-        "selectedIconPath": "imgs/icon/my.png"
+        "selectedIconPath": "imgs/icon/my@3x.png"
       }
     ]
   }

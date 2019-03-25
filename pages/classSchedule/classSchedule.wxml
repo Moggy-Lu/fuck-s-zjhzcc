@@ -2,23 +2,29 @@
 <view class='container'>
   <view class='classic-main'>
     <view class='week-box'>
-      <view bindtap='onWeekBind' data-index="{{index}}" wx:for="{{dateList}}" class='{{item.num==now?"active":""}} week-item'>{{item.week}}</view>
+      <view bindtap='onWeekBind' data-index="{{index}}" wx:for="{{dateList}}" class='{{index==now?"active":""}} week-item'>{{item}}</view>
     </view>
-    <view class='classicList'>
-      <view wx:if="{{item}}" wx:for="{{week}}" class='classic-text'>
-        <view class='icon-cirlce'></view>
-        <view class='info-box'>
-          <view class='main-info'>
-            <view class='classic-title'>{{item[4]}}</view>
-            <view class='classic-address'>{{item[0]}}</view>
+    <swiper circular="{{true}}" bindchange="changeWeek" current="{{now}}" next-margin="54rpx">
+      <block wx:for="{{schedule}}" wx:for-index="weekIndex">
+        <swiper-item>
+          <view class='classicList'>
+            <view wx:if="{{item}}" wx:for-item="classic" wx:for="{{schedule[weekIndex]}}" class='classic-text'>
+              <view class='icon-cirlce'></view>
+              <view class='info-box'>
+                <view class='main-info'>
+                  <view class='classic-title'>{{classic[4]}}</view>
+                  <view class='classic-address'>{{classic[0]}}</view>
+                </view>
+                <view class='minor-info'>
+                  <view class='minor-item classic-teacher'>{{classic[1]}}</view>
+                  <view class='minor-item classic-time'>{{classic[2]}}</view>
+                  <view class='minor-item classic-week'>{{classic[3]}}</view>
+                </view>
+              </view>
+            </view>
           </view>
-          <view class='minor-info'>
-            <view class='minor-item classic-teacher'>{{item[1]}}</view>
-            <view class='minor-item classic-time'>{{item[2]}}</view>
-            <view class='minor-item classic-week'>{{item[3]}}</view>
-          </view>
-        </view>
-      </view>
-    </view>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
 </view>

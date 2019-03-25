@@ -1,32 +1,27 @@
 <!--pages/release/release.wxml-->
 <view class='release-container'>
-  <view class='textarea-box'>
-    <textarea value='{{inputValue}}' focus="{true}" bindinput="bindTextAreaBlur" placeholder-style='placeholder' placeholder='想写什么，就写什么'></textarea>
-  </view>
-  <view class='updateImageBox'>
-    <view wx:for="{{update_img_urlList}}" class='upImage-box'>
-      <view data-index="{{index}}" catchtap='catchDeleteOn' class='deleteBtn'>
-        <image src='../../imgs/icon/deleteBtn.png'></image>
-      </view>
-      <image src='{{item}}' mode="aspectFill"></image>
+  <form bindsubmit="formSubmit">
+    <view class='textarea-box'>
+      <view bindtap='{{hasTag?"deleteTag":""}}' class='tag'>{{hasTag}}</view>
+      <textarea value='{{inputValue}}' focus="{true}" bindinput="bindTextAreaBlur" placeholder-style='placeholder' placeholder='想写什么，就写什么'></textarea>
     </view>
-    <image bind:tap="chooseImages" src='../../imgs/icon/addImage.png' class='placeholder-image' wx:if="{{hidden}}"></image>
-  </view>
-  <view class='otherTag'>
-    <view class='tagItem topic-box'>
-      <image class='topicIcon' src='../../imgs/icon/topic.png'></image>
-      <view class='tagTitle'>
-        <view class='tagText'>选择圈子</view>
-        <image class='arrowIcon' src='../../imgs/icon/arrow@right.png'></image>
+    <view class='updateImageBox'>
+      <view wx:for="{{update_img_urlList}}" class='upImage-box'>
+        <view data-index="{{index}}" catchtap='catchDeleteOn' class='deleteBtn'>
+          <image src='../../imgs/icon/deleteBtn.png'></image>
+        </view>
+        <image src='{{item}}' mode="aspectFill"></image>
+      </view>
+      <view wx:if="{{imageNumber!=0}}" bind:tap="chooseImages" class='addImg-box'>
+        <image src='../../imgs/icon/add.png' class='placeholder-image'></image>
       </view>
     </view>
-    <view class='tagItem address-box'>
-      <image class='topicIcon' src='../../imgs/icon/address.png'></image>
-      <view class='tagTitle'>
-        <view class='tagText'>所在位置</view>
-        <image class='arrowIcon' src='../../imgs/icon/arrow@right.png'></image>
+    <view class='tag-box'>
+      <view class='title'>选择标签</view>
+      <view class='item-box'>
+        <view bindtap='{{hasTag?"":"addTag"}}' data-index="{{index}}" class='tag-item' wx:for="{{tagList}}">{{item}}</view>
       </view>
     </view>
-  </view>
-  <view class='releaseButton' bind:tap="updateRelease">发布动态</view>
+    <button class='releaseButton' bind:tap="updateRelease">发布动态</button>
+  </form>
 </view>

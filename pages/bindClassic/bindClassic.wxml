@@ -1,0 +1,16 @@
+<!--pages/bindClassic/bindClassic.wxml-->
+<view class='container'>
+  <form bindsubmit="formSubmit">
+    <view class='bindClassicBox'>
+      <view class='item'>
+        <view class='title'>学号</view>
+        <input name="number" type='number' placeholder='请输入'></input>
+      </view>
+      <view class='item'>
+        <view class='title'>密码</view>
+        <input password="true" name="password" placeholder='请输入'></input>
+      </view>
+    </view>
+    <button form-type="submit">立即绑定</button>
+  </form>
+</view>

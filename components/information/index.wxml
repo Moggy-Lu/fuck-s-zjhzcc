@@ -10,27 +10,35 @@
         <view class='upDate'>{{time}}</view>
       </view>
     </view>
-    <view class='concern-btn'>关注</view>
+    <view catchtap='onFollowUser' wx:if="{{!hasMe&&!infoItem.follow}}" class='concern-btn'>关注</view>
+    <view catchtap='onFollowUser' wx:if="{{!hasMe&&infoItem.follow}}" class='concern-btn'>已关注</view>
+    <view catchtap='onDeleteInfo' wx:if="{{hasMe}}" class='delete-btn'>删除</view>
   </view>
   <view class='info-main'>
-    <view class='text-main'>{{infoItem.text}}</view>
+    <view class='text-main'>
+      <view class='text-box'>
+        <span wx:if="{{infoItem.tag!='无'}}" class='text-tag'>{{infoItem.tag}}</span>
+        {{infoItem.text}}
+      </view>
+    </view>
     <view class='imgs-main {{hasBig?"bigImg":"smallImg"}}'>
-      <image 
+      <view class='img-box' wx:key="key" wx:for="{{infoItem.imgs}}" >
+        <span wx:if="{{superHighIMg}}">长图</span>
+        <image 
       style='{{hasfit?"max-width: 264rpx;" : "max-height: 264rpx;"}}' 
       bindload="{{hasBig?'imageLoad':''}}" 
-      mode='aspectFit' 
+      mode='aspectFill' 
       data-index='{{index}}' 
       catchtap='previewImg' 
-      wx:key="key" 
-      wx:for="{{infoItem.imgs}}" 
       src="{{item.url}}"></image>
+      </view>
     </view>
   </view>
   <view class='info-bottom'>
     <view class='action-icon' catchtap="clickAction">
-      <forward-cpt />
-      <commentIcon-cpt count="{{infoItem.sum_reply}}" mid="{{infoItem.id}}" />
-      <like-cpt catch:like="onLike" class="like" like="{{like}}" count="{{infoItem.sum_like}}" />
+      <forward-cpt style="flex:1;" />
+      <commentIcon-cpt style="flex:1;" count="{{infoItem.sum_reply}}" mid="{{infoItem.id}}" />
+      <like-cpt style="flex:1;" catch:like="onLike" class="like" like="{{like}}" count="{{infoItem.sum_like}}" />
     </view>
   </view>
 </view>

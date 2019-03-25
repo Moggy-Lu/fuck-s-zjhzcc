@@ -1,0 +1,5 @@
+<!--components/want/index.wxml-->
+<view class='container'>
+  <view class='number'>{{number}}</view>
+  <view class='text'>想去</view>
+</view>

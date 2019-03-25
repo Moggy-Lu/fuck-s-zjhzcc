@@ -5,46 +5,72 @@
       <image src='{{activeData.image}}'></image>
     </view>
     <view class='active-info'>
-      <view class='title'>{{activeData.e_name}}</view>
-      <view class='item group'>
-        <view class='item-icon' style='border-color: #F973D5;'></view>
-        <view class='text'>{{activeData.group}}</view>
+      <view class='info-box'>
+        <view class='title'>{{activeData.e_name}}</view>
+        <view class='group'>{{activeData.group}}</view>
       </view>
-      <view class='item time'>
-        <view class='item-icon' style='border-color: #F973D5;'></view>
-        <view class='text'>{{activeData.startup_time}}</view>
+      <view class='btn-box'>
+        <forward-cpt />
+        <comment-cpt hasHidden="{{fasle}}" count="0" />
+        <want-cpt />
       </view>
-      <view class='item address'>
-        <view class='item-icon' style='border-color: #F973D5;'></view>
-        <view class='text'>{{activeData.address}}</view>
-      </view>
-      <view class='icon-box'></view>
     </view>
   </view>
   <view wx:if="{{isMe}}" class='myActive'>
-      <view class='myActive-item'>
-        <view class='myActive-icon'></view>
-        <view class='text'>编辑活动</view>
+    <view class='title-box'>
+      <view class='text'>签到</view>
+      <view class='title-icon'></view>
+    </view>
+    <view class='data-box'>
+      <view class='data-item peopleNum-box'>
+        <view class='text'>累计人数(人)</view>
+        <view class='num'>{{activeData.actual_num}}</view>
       </view>
-      <view class='myActive-item'>
-        <view class='myActive-icon'></view>
-        <view class='text'>开始签到</view>
-      </view>
-      <view class='myActive-item'>
-        <view class='myActive-icon'></view>
-        <view class='text'>停止签到</view>
+      <view class='data-item timeNum-box'>
+        <view class='text'>累计时长(分钟)</view>
+        <view class='num'>{{activeData.actual_num}}</view>
       </view>
     </view>
-  <view class='item-box introduce'>
-    <view class='title'>简介</view>
-    <view class='main-text'></view>
+    <view class='btn-box'>
+      <view class='begin-box'>
+        <view bindtap='beginActive' class='btn-item begin-btn'>
+          <image src='../../imgs/icon/begin.png'></image>
+        </view>
+        <view bindtap='endActive' class='btn-item end-btn'>
+          <image src='../../imgs/icon/end.png'></image>
+        </view>
+      </view>
+      <view class='code-box'>
+        <view wx:if="{{isBegin}}" bindtap='getQrCode' class='btn-item qrCode'>
+          <image src='../../imgs/icon/qrCode.png'></image>
+        </view>
+      </view>
+    </view>
   </view>
-  <view class='item-box other-message'>
-    <view class='title'>其他信息</view>
-    <view class='other-box'></view>
+  <view class='basic-box'>
+    <view class='basic-item'>
+      <view class='item-icon'></view>
+      <view class='text'>{{activeData.e_type}}</view>
+    </view>
+    <view class='basic-item'>
+      <view class='item-icon'></view>
+      <view class='text'>{{activeData.startup_time}}</view>
+    </view>
+    <view class='basic-item'>
+      <view class='item-icon'></view>
+      <view class='text' style='border-bottom: 0'>{{activeData.address}}</view>
+    </view>
   </view>
-  <view class='item-box comment'>
-    <view class='title'>评论</view>
-    <view class='comment-box'></view>
+  <view class='introduce-box'>
+    <view class='title-box'>
+      <view class='text'>简介</view>
+      <view class='title-icon'></view>
+    </view>
+    <view class='message'>{{activeData.remark}}</view>
+  </view>
+  <view catchtap='onHiddenModel' wx:if="{{hiddenModel}}" class='qrCodeShowModel'>
+    <view class='qrCode'>
+      <image src='{{qrCodeUrl}}'></image>
+    </view>
   </view>
 </view>

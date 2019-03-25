@@ -14,13 +14,13 @@
     <view class='article'>
       <view class='text'>{{articleData.text}}</view>
       <view class='imagesList'>
-        <image mode='aspectFill' data-index='{{index}}' catchtap='previewImg' wx:key="key" wx:for="{{articleData.imgs}}" src='{{item.url}}'></image>
+        <image catchtap='previewImg' mode='aspectFill' data-index='{{index}}' catchtap='previewImg' wx:key="key" wx:for="{{articleData.imgs}}" src='{{item.url}}'></image>
       </view>
     </view>
     <view class='action-icon' catchtap="clickAction">
-      <commentIcon-cpt count="{{articleData.sum_reply}}" mid="{{articleData.id}}" />
-      <like-cpt catch:like="onLike" class="like" like="{{like}}" count="{{articleData.sum_like}}" />
-      <forward-cpt />
+      <forward-cpt style="flex:1;" />
+      <commentIcon-cpt style="flex:1;" count="{{articleData.sum_reply}}" mid="{{articleData.id}}" />
+      <like-cpt style="flex:1;" catch:like="onLike" class="like" like="{{like}}" count="{{articleData.sum_like}}" />
     </view>
   </view>
   <view class='comment-main'>
