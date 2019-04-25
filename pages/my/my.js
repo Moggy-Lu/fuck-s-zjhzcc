@@ -12,6 +12,7 @@ Page({
     canIUse : true,
     userInfo : {},
     myMessageList:[],
+    myInfo:{},
   },
   //删除动态
   onDeleteMessage:function(e){
@@ -57,6 +58,11 @@ Page({
           canIUse: false,
           userInfo: app.globalData.userInfo,
           myMessageList: res,
+        })
+      })
+      userModel.getMyInfo((res)=>{
+        this.setData({
+          myInfo: res
         })
       })     
     }

@@ -2,14 +2,14 @@
 <view class='detail-container'>
   <view class='article-main'>
     <view class='article-header'>
-      <view class='user-main'>
+      <view catchtap='clickUser' class='user-main'>
         <image src='{{articleData.icon}}'></image>
         <view class='userName'>
           <view class='name'>{{articleData.nikename}}</view>
           <view class='time'>{{time}}</view>
         </view>
       </view>
-      <view class='concern-btn'>关注</view>
+      <view wx:if="{{!articleData.follow}}" class='concern-btn'>关注</view>
     </view>
     <view class='article'>
       <view class='text'>{{articleData.text}}</view>
@@ -20,7 +20,7 @@
     <view class='action-icon' catchtap="clickAction">
       <forward-cpt style="flex:1;" />
       <commentIcon-cpt style="flex:1;" count="{{articleData.sum_reply}}" mid="{{articleData.id}}" />
-      <like-cpt style="flex:1;" catch:like="onLike" class="like" like="{{like}}" count="{{articleData.sum_like}}" />
+      <like-cpt style="flex:1;" catch:like="onLike" class="like" like="{{articleData.like}}" count="{{articleData.sum_like}}" />
     </view>
   </view>
   <view class='comment-main'>

@@ -1,8 +1,5 @@
 <!--pages/index/index.wxml-->
-<view wx:if="{{!hasRequest}}">
-  <fail-cpt /> 
-</view>
-<view wx:if="{{hasRequest}}" class='container'>
+<view catchtap='onHidden' class='container'>
   <view class='search-box'>
     <view class='search'>
       <view class='search-spot'></view>
@@ -11,7 +8,7 @@
   </view>
   <view class='space-box'></view>
   <view class='swiper-box'>
-    <swiper indicator-active-color="#fff" indicator-dots="true" autoplay="true" interval="10000">
+    <swiper circular="true" indicator-active-color="#fff" indicator-dots="true" autoplay="true" interval="10000">
       <block wx:key="key" wx:for="{{itemList}}">
         <swiper-item>
           <view class='swiper-item'>
@@ -49,26 +46,54 @@
   </view>
   <view class='classify-box'>
     <view 
+    bindtap="onTagBind" 
     data-index="{{index}}" 
-    wx:for="{{tagList}}" 
-    bindtap='onScrollItem' 
-    class='scroll-item {{item.status?"active":""}}'>{{item.text}}
+    wx:for="{{tagList}}"  
+    class='scroll-item {{index==now?"active":""}}'>{{item.text}}
     </view>
     <view class='filter-box'>
-      <view>筛选</view>
-      <image></image>
+      <view catchtap='screenShow' class='screen-item'>
+        <view>筛选</view>
+        <image></image>
+      </view>
+      <view wx:if="{{radioHidden}}" class='screen-box'>
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio" wx:for="{{screenList}}">
+            <radio value="{{item}}" />
+            {{item}}
+          </label>
+        </radio-group>
+      </view>
     </view>
   </view>
   <view class='information-box'>
-    <swiper>
-      <block wx:for="{{tagList}}" wx:for-index="infoIndex">
+    <swiper wx:if="{{hasRequest}}" bindchange="changeTag" current="{{now}}"  style='height:{{swiperHeight}}px;'>
+      <block wx:for="{{tagList}}" wx:for-item="tagIndex">
         <swiper-item>
-          <view class='information-main'>
-            <information-cpt catchfollow="onFollow" wx:for="{{infoItem}}" infoItem="{{item}}" />
-          </view>
+          <scroll-view 
+          upper-threshold="100" 
+          lower-threshold="100"
+          enable-back-to-top="true" 
+          bindscrolltoupper="upper" 
+          bindscrolltolower="lower" 
+          style="height:{{scrollHeight}}px;" 
+          scroll-y="true">
+            <view class='information-main'>
+              <information-cpt bindcomment="onComment" catchfollow="onFollow" wx:for="{{tagIndex.list}}" infoItem="{{item}}" />
+            </view>
+          </scroll-view>
         </swiper-item>
       </block>
     </swiper>
+    <view wx:if="{{!hasRequest}}">
+      <fail-cpt bindretry="bindRetry" /> 
+    </view>
+  </view>
+</view>
+<view wx:if="{{hideComment}}" catchtap='hiddenComment' class='allHideComment'>
+  <view catchtap='showComment' class='comment-box'>
+    <input value='{{inputValue}}' focus='{{true}}' bindinput='bindCommentInput' cursor-spacing='10rpx' placeholder='评论{{infoItem.nickname}}：' placeholder-class='placeholderCss'></input>
+    <view bindtap='bindComment' class='commentBtn'>发送</view>
   </view>
 </view>
          

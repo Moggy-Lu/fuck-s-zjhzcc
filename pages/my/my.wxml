@@ -10,44 +10,46 @@
       <view class='follow-box'>
         <view style='border-right: 2rpx rgba(51,51,51,1) solid;' class='item'>
           <view class='title'>关注</view>
-          <view class='number'>{{0}}</view>
+          <view class='number'>{{myInfo.follow.fans}}</view>
         </view>
         <view style='padding-left: 24rpx;' class='item'>
           <view class='title'>粉丝</view>
-          <view class='number'>{{0}}</view>
+          <view class='number'>{{myInfo.follow.follow}}</view>
         </view>
       </view>
     </view>
   </view>
   <view class='myBtn-box'>
     <view bindtap='bindMyMessageOn' class='item'>
-      <image src='../../imgs/icon/myMessage.png'></image>
+      <image src='../../imgs/icon/myRelease@3x.svg'></image>
       <view class='title'>我的动态</view>
     </view>
     <view class='item'>
-      <image src='../../imgs/icon/myNews.png'></image>
+      <image src='../../imgs/icon/myMessage@3x.svg'></image>
       <view class='title'>我的消息</view>
     </view>
     <view class='item'>
-      <image src='../../imgs/icon/unused.png'></image>
-      <view class='title'>我的闲置</view>
+      <image src='../../imgs/icon/myBuy@3x.svg'></image>
+      <view class='title'>我的交易</view>
     </view>
     <view bindtap='bindMyActiveOn' class='item'>
-      <image src='../../imgs/icon/active.png'></image>
+      <image src='../../imgs/icon/myActive@3x.svg'></image>
       <view class='title'>我的活动</view>
     </view>
   </view>
   <view class='personal-setting'>
     <view class='item'>
-      <image src=''></image>
+      <image src='../../imgs/icon/material@3x.png'></image>
       <view class='title'>个人资料</view>
     </view>
     <view class='item'>
-      <image src=''></image>
-      <view class='title'>我的客服</view>
+      <image src='../../imgs/icon/customer@3x.png'></image>
+      <view class='button-box'>
+        <button open-type="contact">我的客服</button>
+      </view>
     </view>
     <view class='item'>
-      <image src=''></image>
+      <image src='../../imgs/icon/about@3x.png'></image>
       <view class='title'>关于小程序</view>
     </view>
   </view>

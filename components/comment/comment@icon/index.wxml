@@ -1,5 +1,5 @@
 <!--components/comment/index.wxml-->
-<view bindtap='oncomment' class="container" bind:tap="onComment">
+<view bindtap='oncomment' class="container">
   <image src="../images/comment.png" />
   <view class='CommentNum'>{{count==0?'评论':count}}</view>
 </view>

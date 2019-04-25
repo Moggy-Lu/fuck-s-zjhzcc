@@ -77,8 +77,6 @@
 .container .personal-setting .item image{
   width:16px;
   height:16px;
-  border:2px solid rgba(199,198,198,1);
-  opacity:1;
   margin-right: 16rpx;
 }
 .container .personal-setting .item .title{
@@ -87,4 +85,21 @@
   font-size: 28rpx;
   width: 100%;
   border-bottom: 2rpx rgba(242,242,242,1) solid;
+}
+.button-box{
+  width: 100%;
+  border-bottom: 2rpx rgba(242,242,242,1) solid;
+  padding: 32rpx 0;
+}
+button{
+  color:rgba(51,51,51,1);
+  font-size: 28rpx;
+  background: #fff;
+  margin: 0rpx;
+  padding: 0rpx;
+  line-height: 40rpx;
+  display: inline;
+}
+button::after{
+  border: none;
 }

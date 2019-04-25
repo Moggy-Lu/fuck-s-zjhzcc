@@ -8,7 +8,6 @@ class Token {
   }
   verify(sCallBack){
     var token = wx.getStorageSync('token')
-    console.log('token:'+token)
     if(!token){
       this.getTokenFromServer(sCallBack);
     }
@@ -16,21 +15,6 @@ class Token {
       sCallBack && sCallBack()
     )
   }
-  //  _veirfyFromServer(token){
-  //   var that = this
-  //    http.request({
-  //     url : that.verifyUrl,
-  //     data : {
-  //       token : token
-  //     },
-  //     success : function(res) {
-  //       var valid = res.data.isValid;
-  //       if (!valid) {
-  //         that.getTokenFromServer();
-  //       }
-  //     }
-  //   })
-  // }
   getTokenFromServer(sCallBack){
     var that = this
     wx.login({
@@ -44,8 +28,10 @@ class Token {
           success : function(res) {
             wx.setStorageSync('token', res.data.token)
             wx.setStorageSync('uid', res.data.uid)
-            console.log(res.data.token)
             sCallBack && sCallBack(res)
+          },
+          fail : function(res){
+            console.log('fail')
           }
         })
       }

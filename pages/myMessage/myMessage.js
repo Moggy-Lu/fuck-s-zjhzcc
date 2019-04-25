@@ -7,50 +7,65 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tagList: [{
+      page: 1,
+      hasMore: true,
+      list: [],
+      text: "动态"
+    }, {
+      page: 1,
+      hasMore: true,
+      list: [],
+      text: "赞"
+      }, {
+        page: 1,
+        hasMore: true,
+        list: [],
+        text: "评论"
+      }],
+    now: 0,
     infoItem: {},
     page: 1,
-    show: 0, //显示的是哪一栏，0代表全部，1代表原创，2代表赞，3代表转发
     likeList:{},
+    scrollHeight: 0,
   },
 
-  //切换到我的原创方法
-  bindMyAcitve: function() {
-    userModel.getMyMessage(1, (res) => {
-      this.setData({
-        infoItem: res,
-        page: 1,
-        show: 1,
-      })
+  //切换到我的动态方法
+  changeTag: function(options) {
+    let index = options.currentTarget.dataset.index
+    this.setData({
+      now: index,
     })
   },
-  //切换到我的赞方法
-  bindMyLike: function () {
-    userModel.getMyLike((res) => {
-      this.setData({
-        // infoItem: res,
-        show: 2,
-      })
-    })
-  },
-  //切换到我的转发方法
-  bindMyForward: function () {
-    userModel.getMyMessage(1, (res) => {
-      this.setData({
-        // infoItem: res,
-        show: 3,
-      })
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    userModel.getMyMessage(this.data.page, (res) => {
-      this.setData({
-        infoItem: res,
-        page: this.data.page+1,
+    let tagList = this.data.tagList 
+    userModel.getMyMessage(tagList[0].page, (res) => {
+      tagList[0].list = res
+      tagList[0].page += 1
+      userModel.getMyLike(tagList[1].page, (res) => {
+        tagList[1].list = res
+        tagList[1].page += 1
+        this.setData({
+          tagList: tagList
+        })
       })
+    })
+  },
+  //点击tag切换
+  selectTag: function (options){
+    let num = options.currentTarget.dataset.index
+    this.setData({
+      now: num
+    })
+  },
+  //滑动滑块切换Tag
+  changeTag: function (options) {
+    let num = options.detail.current
+    this.setData({
+      now: num
     })
   },
   //删除信息后页面刷新
@@ -63,14 +78,21 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          scrollHeight: res.windowHeight - 60
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('onShow')
+
   },
 
   /**
@@ -91,12 +113,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    userModel.getMyMessage(1, (res) => {
-      this.setData({
-        infoItem: res,
-        page:2,
-      })
-    })
+    
   },
 
   /**

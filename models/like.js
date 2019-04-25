@@ -6,7 +6,6 @@ class LikeModel extends HTTP {
   }
   //点赞或取消点赞
   like(like_or_cancel, id, sCallBack){
-    console.log(id)
     this.request({
       url:"/message/messageLike",
       data:{

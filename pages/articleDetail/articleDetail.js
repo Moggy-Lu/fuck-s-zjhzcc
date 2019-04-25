@@ -19,17 +19,23 @@ Page({
     commentText: '',
     commentImg: [],
     mid: 0,
-    inputFocus:false,
     comType: false,   //回复评论为true，回复文章为false
     mainComment: {},    //保存被评论的主评论信息
     commentUser:'', //要评论的人，默认文章作者
     time:'',
-    like:false,
     inputValue:null,    //输入框的值
     hasMoreData:true,  
     page:1, 
 
     },
+  //点击头像查看他人主页
+  clickUser: function (event) {
+    let uid = this.data.articleData.uid
+    let follow = this.data.articleData.follow
+    wx.navigateTo({
+      url: '../../pages/otherHome/otherHome?follow=' + follow + '&&uid=' + uid
+    })
+  },
     //点赞
   onLike: function (event) {
     let like_or_cancel = event.detail.behavior
@@ -41,7 +47,6 @@ Page({
   catchCommentOn: function (event) {
     let index = event.currentTarget.dataset['index']
     let comment = this.data.commentList[index]
-    // console.log(comment)
     this.setData({
       inputFocus:true,
       comType:true,
@@ -51,6 +56,7 @@ Page({
   },
     //发送评论
     onComment: function(){
+      var that = this
       if(this.data.commentText != ''){
         if(this.data.comType) {
           commentModel.onCommentToCom(
@@ -58,25 +64,34 @@ Page({
           this.data.mainComment.id, 
           this.data.commentImg, 
           this.data.mainComment.uid_from, (res)=>{
-            console.log(res)
+            that.setData({
+              commentText: ''
+            })
+            commentModel.getCommentList(this.data.page, this.data.mid, (res) => {
+              let list = res.data
+              this.setData({
+                commentList: list
+              })
+            })
           })
         }
         else {
           commentModel.onComment(this.data.commentText, this.data.mid, this.data.commentImg, (res) => {
-            console.log(res)
+            that.setData({
+              commentText: ''
+            })
+            commentModel.getCommentList(this.data.page, this.data.mid, (res) => {
+              let list = res.data
+              this.setData({
+                commentList: list
+              })
+            })
           }) 
         }
         //清空输入框
         this.setData({
           inputValue: null
-        }) 
-        //页面重新加载
-        let e = {
-          like:this.data.like,
-          id:this.data.mid,
-          focus: this.data.inputFocus
-        }
-        this.onLoad(e)      
+        })       
       }
     },
     //保存键盘输入
@@ -105,11 +120,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('options.like:' + options.like)
     this.setData({
-      like:(options.like=='true'?true:false),
       mid: options.id,
-      inputFocus:options.focus=='true'?true:false,
     })
     //获取文章详情
     articleModel.getArticleDetail(this.data.mid, (res)=>{

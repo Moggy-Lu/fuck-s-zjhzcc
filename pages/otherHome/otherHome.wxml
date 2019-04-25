@@ -1,0 +1,6 @@
+<!--pages/otherHome/otherHome.wxml-->
+<view class='container'>
+  <view class='user-info'></view>
+  <view class='infoList-box'></view>
+  <view class='bottom-box'></view>
+</view>

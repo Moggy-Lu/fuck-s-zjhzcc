@@ -25,9 +25,9 @@ Component({
   methods: {
     oncomment: function(event) {
       if(this.properties.hasHidden){
-        wx.navigateTo({
-          url: '/pages/articleDetail/articleDetail?focus=true&&id=' + this.properties.mid,
-        })
+        this.triggerEvent('comment', {
+          comment: true
+        }, {})
       }
     }
   }

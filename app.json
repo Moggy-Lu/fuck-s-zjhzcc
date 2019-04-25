@@ -11,7 +11,8 @@
     "pages/activeDetail/activeDetail",
     "pages/createActive/createActive",
     "pages/myMessage/myMessage",
-    "pages/bindClassic/bindClassic"
+    "pages/bindClassic/bindClassic",
+    "pages/otherHome/otherHome"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFB100",
@@ -43,7 +44,7 @@
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "imgs/icon/my-default.png",
+        "iconPath": "imgs/icon/my-default@3x.png",
         "selectedIconPath": "imgs/icon/my@3x.png"
       }
     ]

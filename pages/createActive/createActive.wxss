@@ -95,10 +95,11 @@
 .container button{
   background:rgba(255,177,0,1);
   bottom: 0;
-  width: 100%;
   color: #fff;
-  border-radius: 0;
-  margin-bottom: 32rpx;
+  margin: 32rpx;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  margin-top: 80rpx;
 }
 .container button::after{
   border: none;

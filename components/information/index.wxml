@@ -1,17 +1,16 @@
 <!--components/information/index.wxml-->
 <view class='info-container' catchtap='clickInfo'>
   <view class='info-header'>
-    <view class='user-main'>
+    <view class='user-main' catchtap='clickUser'>
       <view class='avatarUrl'>
         <image src="{{infoItem.icon}}"></image>
       </view>
-      <view class='user-info' catchtap='clickUser'>
+      <view class='user-info'>
         <view class='nickName'>{{infoItem.nickname}}</view>
         <view class='upDate'>{{time}}</view>
       </view>
     </view>
     <view catchtap='onFollowUser' wx:if="{{!hasMe&&!infoItem.follow}}" class='concern-btn'>关注</view>
-    <view catchtap='onFollowUser' wx:if="{{!hasMe&&infoItem.follow}}" class='concern-btn'>已关注</view>
     <view catchtap='onDeleteInfo' wx:if="{{hasMe}}" class='delete-btn'>删除</view>
   </view>
   <view class='info-main'>
@@ -37,7 +36,7 @@
   <view class='info-bottom'>
     <view class='action-icon' catchtap="clickAction">
       <forward-cpt style="flex:1;" />
-      <commentIcon-cpt style="flex:1;" count="{{infoItem.sum_reply}}" mid="{{infoItem.id}}" />
+      <commentIcon-cpt bindcomment="onComment" style="flex:1;" count="{{infoItem.sum_reply}}" mid="{{infoItem.id}}" />
       <like-cpt style="flex:1;" catch:like="onLike" class="like" like="{{like}}" count="{{infoItem.sum_like}}" />
     </view>
   </view>

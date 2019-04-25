@@ -51,7 +51,7 @@ class UserModel extends HTTP {
     })
   }
   //获取自己赞过的动态
-  getMyLike(sCallBack){
+  getMyLike(page, sCallBack){
     this.request({
       url: '/message/getMyLike',
       success: (res) => {
@@ -63,6 +63,16 @@ class UserModel extends HTTP {
   getNotice(sCallBack){
     this.request({
       url: '/user/getNotice',
+      // method:'POST',
+      success: (res) => {
+        sCallBack && sCallBack(res)
+      }
+    })
+  }
+  //获取用户信息
+  getMyInfo(sCallBack) {
+    this.request({
+      url: '/user/getMyInfo',
       // method:'POST',
       success: (res) => {
         sCallBack && sCallBack(res)

@@ -1,6 +1,6 @@
 <!--components/failPage/index.wxml-->
 <view class='container'>
-  <view class='title'>网络错误</view>
-  <view class='retry-text'>点击立刻重试</view>
-  <image src='../../imgs/icon/404.png'></image>
+  <view class='title'>出错啦</view>
+  <view bindtap='bindRetry' class='retry-text'>点击立刻重试</view>
+  <image mode='widthFix' src='../../imgs/icon/404.png'></image>
 </view>

@@ -25,7 +25,7 @@ Component({
   data: {
     time:'',
     hasBig: false,
-    hasfit: null //是长图还是宽图
+    hasfit: null, //是长图还是宽图
   },
 
 /**
@@ -81,11 +81,20 @@ Component({
         },{uid: uid}], {})
       })
     },
+    //评论
+    onComment: function(event){
+      var that = this
+      this.triggerEvent('comment', {
+        mid: that.data.infoItem.id
+      }, {})
+    },
     //点赞
     onLike: function (event) {
       let like_or_cancel = event.detail.behavior
       likeModel.like(like_or_cancel, this.data.infoItem.id, (res)=>{
-        console.log(res)
+        this.setData({
+          like: !this.data.like
+        })
       })
     },
     //获取图片原始宽和高
@@ -108,11 +117,16 @@ Component({
     },
     clickInfo: function(event) {
       wx.navigateTo({
-        url: '../../pages/articleDetail/articleDetail?focus=false&&id='+this.data.infoItem.id+'&&like='+this.data.like
+        url: '../../pages/articleDetail/articleDetail?id='+this.data.infoItem.id
       })
     },
+    //点击头像查看他人主页
     clickUser: function(event) {
-      console.log('点击头像')
+      let uid = this.data.infoItem.uid
+      let follow  = this.data.infoItem.follow
+      wx.navigateTo({
+        url: '../../pages/otherHome/otherHome?follow=' + follow + '&&uid=' + uid
+      })
     },
     clickAction: function(event) {
 

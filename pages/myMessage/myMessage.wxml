@@ -1,12 +1,32 @@
 <!--pages/myMessage/myMessage.wxml-->
 <view class='container'>
   <view class='header'>
-    <view bindtap='bindMyAcitve' class='item {{show==0?"active":""}}'>全部</view>
-    <view bindtap='bindMyAcitve' class='item {{show==1?"active":""}}'>原创</view>
-    <view bindtap='bindMyLike' class='item {{show==2?"active":""}}'>赞</view>
-    <view bindtap='bindMyForward' class='item {{show==3?"active":""}}'>转发</view>
+    <view 
+    wx:for="{{tagList}}" 
+    bindtap='selectTag' 
+    data-index='{{index}}' 
+    class='item-box'>
+      <view class='item {{index==now?"active":""}}'>{{item.text}}</view>
+    </view>
   </view>
   <view class='information-main'>
-      <information-cpt bind:delete="bindDelete" wx:for="{{infoItem}}" hasMe="{{true}}" infoItem="{{item}}" />
+    <swiper bindchange="changeTag" current="{{now}}"  style='height:{{scrollHeight}}px;'>
+      <block wx:for="{{tagList}}">
+        <swiper-item>
+          <scroll-view 
+          upper-threshold="100" 
+          lower-threshold="100"
+          enable-back-to-top="true" 
+          bindscrolltoupper="upper" 
+          bindscrolltolower="lower" 
+          style="height:{{scrollHeight}}px;" 
+          scroll-y="true">
+            <view class='information-main'>
+              <information-cpt wx:for="{{item.list}}" wx:for-item="items" bind:delete="bindDelete" hasMe="{{true}}" infoItem="{{items}}" />
+            </view>
+          </scroll-view>
+        </swiper-item>
+      </block>
+    </swiper>
     </view>
 </view>

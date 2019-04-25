@@ -75,7 +75,7 @@ Page({
   },
   //发布动态
   updateRelease: function(){
-    if (this.data.textareaText || this.data.update_img_urlList){
+    if (this.data.textareaText){
       let imgs = this.data.update_img_urlList
       let updata = {
         text: this.data.textareaText,
