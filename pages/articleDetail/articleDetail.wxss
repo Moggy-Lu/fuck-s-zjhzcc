@@ -1,7 +1,10 @@
 /* pages/articleDetail/articleDetail.wxss */
 .detail-container{
   background: #fff;
+}
+.detail-container .article-main{
   margin: 32rpx;
+  border-bottom: 1px solid rgba(242,242,242,1);
 }
 .detail-container .article-main .article-header .user-main{
   display: flex;
@@ -54,24 +57,14 @@
   margin: 2px;
   border-radius: 5px;
 }
-.detail-container .comment-box {
+.detail-container .icon-box {
   display: flex;
   position: fixed;
   bottom: 0rpx;
   width: 100%;
-  background-color: #fefefe;
-  border-top: 1rpx #eee solid;
-  padding: 20rpx 20rpx;
   z-index: 99;
-  margin-left: -24rpx;
-}
-.detail-container .comment-box input{
-  width: 85%;
-}
-.detail-container .comment-box .commentBtn {
-  font-size: 32rpx;
-  color: #757575;
-  font-weight: 500;
+  background: #F2F2F2;
+  box-shadow:0px 0px 6px rgba(0,0,0,0.1);
 }
 .placeholderCss{
   color: #9e9e9e;
@@ -81,8 +74,39 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
-  border-bottom: 1px solid rgba(242,242,242,1);
+}
+.detail-container .tagBar{
+  display: flex;
+  justify-content: space-between;
+  margin: 32rpx;
+}
+.detail-container .tagBar .rightItem{
+  display: flex;
+}
+.detail-container .tagBar .itemBox{
+  display: flex;
+  flex-direction: column;
+}
+.detail-container .tagBar .rightItem .itemBox{
+  margin-left: 56rpx;
+}
+.detail-container .tagBar .itemBox .itemText .title{
+  font-weight: 500;
+  margin-right: 8rpx;
+}
+.detail-container .tagBar .itemBox .itemText{
+  display: flex;
+  flex-direction: row;
+}
+.detail-container .tagBar .itemBox .active{
+  width: 28px;
+  height: 0px;
+  border: 2px solid #FFB100;
+  border-radius: 2px;
+  background: #FFB100;
+  margin-top: 4px;
 }
 .detail-container .comment-main{
-  margin-bottom: 110rpx;
+  margin: 32rpx;
+  padding-bottom: 40px;
 }

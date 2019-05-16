@@ -1,1 +1,84 @@
 /* pages/otherHome/otherHome.wxss */
+.container{
+  width: 100%;
+  height: 100%;
+}
+.container .personal-box{
+  margin: 32rpx 32rpx 72rpx 32rpx;
+  box-shadow:0px 12rpx 40rpx rgba(0,0,0,0.1);
+  opacity:1;
+  background:rgba(255,255,255,1);
+  border-radius:20rpx;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+}
+.container .personal-box .avatarImg image{
+  width:134rpx;
+  height:134rpx;
+  border-radius:50%;
+  margin: 32rpx;
+}
+.container .personal-box .message-box{
+  display: flex;
+  flex-direction: column;
+}
+.container .personal-box .message-box .name{
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 16rpx;
+}
+.container .personal-box .message-box .follow-box{
+  display: flex;
+  color:rgba(51,51,51,1);
+  font-size: 28rpx;
+}
+.container .personal-box .message-box .follow-box .item{
+  padding-right: 24rpx;
+  display: flex;
+}
+.container .personal-box .message-box .follow-box .item .title{
+  margin-right: 8rpx;
+}
+.container .infoList-box{
+  height: 100%;
+}
+.container .infoList-box .titleBox{
+  border-bottom: 1px #F2F2F2 solid;
+  margin: 0rpx 32rpx 46rpx 32rpx;
+}
+.container .infoList-box .titleBox .title{
+  color: #333333;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16rpx;
+}
+.container .bottom-box{
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  box-shadow:0px 0px 6px rgba(0,0,0,0.1);
+  display: flex;
+  background: #fff;
+}
+.container .bottom-box .itemBox{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32rpx 0rpx;
+}
+.container .bottom-box .itemBox .left-item{
+  width: 100%;
+  border-right: 1px #F2F2F2 solid;
+  display: flex;
+  justify-content: center;
+}
+.container .bottom-box .itemBox .text{
+  font-size: 15px;
+  color: #999999;
+}
+.container .bottom-box .itemBox .left-item .follow-text{
+  font-size: 15px;
+  color: #FFB100;
+}

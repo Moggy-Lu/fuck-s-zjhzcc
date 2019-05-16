@@ -3,7 +3,8 @@
     "commentInfo-cpt" : "../../components/comment/comment@info/index",
     "like-cpt": "../../components/like/index",
     "commentIcon-cpt": "../../components/comment/comment@icon/index",
-    "forward-cpt": "../../components/forward/index"
+    "forward-cpt": "../../components/forward/index",
+    "commentInput": "../../components/comment/comment@input/index"
     },
     "windows": {
       "onReachBottomDistance": 200

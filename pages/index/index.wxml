@@ -2,8 +2,11 @@
 <view catchtap='onHidden' class='container'>
   <view class='search-box'>
     <view class='search'>
-      <view class='search-spot'></view>
-      <input placeholder='搜索' placeholder-class='placeholder'></input>
+      <view></view>
+      <view bindtap='bindSearchOn' class='searchInput'>
+        <image src="../../imgs/icon/search.png"></image>
+        <view class='searchBoxText'>输入想搜的关键词</view>
+      </view>
     </view>
   </view>
   <view class='space-box'></view>
@@ -44,56 +47,24 @@
       <view>更多</view>
     </view>
   </view>
-  <view class='classify-box'>
+  <view class="{{scrollTop>top ? 'topnavFixed' : 'topnavRelative'}} classify-box">
     <view 
     bindtap="onTagBind" 
     data-index="{{index}}" 
     wx:for="{{tagList}}"  
     class='scroll-item {{index==now?"active":""}}'>{{item.text}}
     </view>
-    <view class='filter-box'>
-      <view catchtap='screenShow' class='screen-item'>
-        <view>筛选</view>
-        <image></image>
-      </view>
-      <view wx:if="{{radioHidden}}" class='screen-box'>
-        <radio-group class="radio-group" bindchange="radioChange">
-          <label class="radio" wx:for="{{screenList}}">
-            <radio value="{{item}}" />
-            {{item}}
-          </label>
-        </radio-group>
-      </view>
-    </view>
   </view>
   <view class='information-box'>
-    <swiper wx:if="{{hasRequest}}" bindchange="changeTag" current="{{now}}"  style='height:{{swiperHeight}}px;'>
-      <block wx:for="{{tagList}}" wx:for-item="tagIndex">
-        <swiper-item>
-          <scroll-view 
-          upper-threshold="100" 
-          lower-threshold="100"
-          enable-back-to-top="true" 
-          bindscrolltoupper="upper" 
-          bindscrolltolower="lower" 
-          style="height:{{scrollHeight}}px;" 
-          scroll-y="true">
-            <view class='information-main'>
-              <information-cpt bindcomment="onComment" catchfollow="onFollow" wx:for="{{tagIndex.list}}" infoItem="{{item}}" />
-            </view>
-          </scroll-view>
-        </swiper-item>
-      </block>
-    </swiper>
+    <view class='information-main'>
+      <information-cpt bindcomment="onComment" catchfollow="onFollow" wx:for="{{tagList[now].list}}" infoItem="{{item}}" />
+    </view>
+    <loadmore show="{{tagList[now].hasMore}}" line="{{true}}" />
     <view wx:if="{{!hasRequest}}">
       <fail-cpt bindretry="bindRetry" /> 
     </view>
   </view>
 </view>
-<view wx:if="{{hideComment}}" catchtap='hiddenComment' class='allHideComment'>
-  <view catchtap='showComment' class='comment-box'>
-    <input value='{{inputValue}}' focus='{{true}}' bindinput='bindCommentInput' cursor-spacing='10rpx' placeholder='评论{{infoItem.nickname}}：' placeholder-class='placeholderCss'></input>
-    <view bindtap='bindComment' class='commentBtn'>发送</view>
-  </view>
-</view>
+<!-- 位于底部的评论栏 -->
+<commentInput belongto="{{mid}}" type="{{fasle}}" name="{{commentName}}" bind:comment="bindComment" show="{{hideComment}}" />
          

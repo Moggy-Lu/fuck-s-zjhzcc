@@ -7,6 +7,30 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+}
+.container .header .leftBox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.container .header .rightBox{
+  display: flex;
+}
+.container .header .rightBox .itemBox{
+  display: flex;
+  align-items: center;
+}
+.container .header .rightBox .itemBox .iconItem{
+  width: 20px;
+  height: 20px;
+  background: #C7C6C6;
+  border: 1px solid #C7C6C6;
+  border-radius: 50%;
+}
+.container .header .rightBox .itemBox .number{
+  color: #C7C6C6;
+  margin-left: 4px;
 }
 .container .header .avatarUrl image{
   width: 60rpx;
@@ -55,4 +79,16 @@
   white-space: nowrap;
   height: 36rpx;
   float: left;
+}
+.container .subreply-box .hiddenComment{
+  display: flex;
+}
+.container .subreply-box .hiddenComment .commentUser{
+  color: #039be5;
+}
+.container .subreply-box .hiddenComment .moreBtn{
+  color: #039be5;
+}
+.container .subreply-box .hiddenComment span{
+  margin: 0px 2px;
 }

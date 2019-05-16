@@ -15,11 +15,16 @@ Component({
     let time = util.getDate(this.properties.commentData.create_time)
     this.setData({
       time: time,
+      subreplyNumber: this.properties.commentData.subreply.data.length,
     })
-    // console.log(this.properties.commentData)
     if(this.properties.commentData.subreply.data.length == 0){
       this.setData({
         isSubreply:false
+      })
+    }
+    else if (this.properties.commentData.subreply.data.length > 1){
+      this.setData({
+        hiddenMore: true
       })
     }
   },
@@ -30,12 +35,41 @@ Component({
   data: {
     time:'',
     isSubreply: true,
+    hiddenMore: false,
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    
+    onMore(){
+      this.setData({
+        hiddenMore: false,
+      })
+    },
+    //点击主评论
+    commentToInfo: function(options){
+      let name = options.currentTarget.dataset.name
+      let uidfrom = options.currentTarget.dataset.uidfrom
+      let belongto = options.currentTarget.dataset.belongto
+      this.triggerEvent('comTo', {
+        name: name,
+        uidfrom: uidfrom,
+        belongto: belongto,
+      }, {})
+    },
+    //点击子评论
+    commentToCom:function(options){
+      if (!this.data.hiddenMore){
+        let name = options.currentTarget.dataset.name
+        let uidfrom = options.currentTarget.dataset.uidfrom
+        let belongto = options.currentTarget.dataset.belongto
+        this.triggerEvent('comTo', {
+          name: name,
+          uidfrom: uidfrom,
+          belongto: belongto,
+        }, {})
+      }
+    }
   }
 })

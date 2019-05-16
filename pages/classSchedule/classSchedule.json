@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "fail-cpt": "/components/failPage/index"
+  }
 }

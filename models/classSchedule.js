@@ -42,7 +42,6 @@ class ScheduleModel extends HTTP {
     this.request({
       url: '/school/getClass',
       success: (res) => {
-        console.log('success')
         sCallBack && sCallBack(res)
       },
       complete: (res) => {

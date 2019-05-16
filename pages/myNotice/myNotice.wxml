@@ -1,0 +1,26 @@
+<!--pages/myNotice/myNotice.wxml-->
+<view class='noticeContainer'>
+  <view class='noticeHeader'>
+    <view bindtap='changeTag' data-index='0' class='headerItem'>
+      <view class='text {{now==0?"active":""}}'>通知</view>
+    </view>
+    <view bindtap='changeTag' data-index='1' class='headerItem'>
+      <view class='text {{now==1?"active":""}}'>私信</view>
+    </view>
+  </view>
+  <view class='noticeMain'>
+    <scroll-view scroll-y style='height:{{windowHeight-46}}px;'>
+      <view bindtap='onDetail' wx:if="{{now==0}}" wx:key="{{item.mid}}" wx:for="{{noticeList}}" data-mid='{{item.mid}}' class='noticeItem'>
+        <view class='leftBox'>
+          <view class='headerImg'>
+            <image src=''></image>
+          </view>
+        </view>
+        <view class='rightBox'>
+          <view class='itemText'>{{item.msg}}</view>
+          <view class='itemTime'>02-17 14:00</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

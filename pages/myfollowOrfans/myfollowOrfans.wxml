@@ -1,0 +1,11 @@
+<!--pages/myfollowOrfans/myfollowOrfans.wxml-->
+<view class='container'>
+  <view wx:if="{{item.nickname}}" bindtap="onUserBind" data-index="{{index}}" wx:for="{{userInfoData}}" class='userItem'>
+    <view class='leftBox'>
+      <image src="{{item.icon}}"></image>
+    </view>
+    <view class='rightBox'>
+      <view class='nickname'>{{item.nickname}}</view>
+    </view>
+  </view>
+</view>

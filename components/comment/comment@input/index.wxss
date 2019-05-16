@@ -1,0 +1,49 @@
+/* components/comment/comment@input/index.wxss */
+.comment-box{
+  position: fixed;
+  top: 0rpx;
+  width: 100%;
+  z-index: 100;
+  height: 100%;
+  background:rgba(0,0,0,0.2);
+}
+.comment-box .itemMain{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #F2F2F2;
+  padding: 0rpx 12rpx;
+}
+.comment-box .itemMain .commentUser{
+  margin: 24rpx 0rpx;
+  color: #C7C6C6;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.comment-box .itemMain .commentUser span{
+  color: #333;
+  font-weight: 500;
+  margin-left: 4px;
+}
+.comment-box .itemMain .iconItem{
+  display: flex;
+  justify-content: flex-end;
+}
+.comment-box .itemMain .iconItem .putBtn{
+  padding: 32rpx;
+  color: #FFB100;
+}
+.comment-box .itemMain .commentInput{
+  background: #fff;
+  margin-right: 24rpx;
+  height: 80rpx;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.comment-box .itemMain .commentInput input{
+  margin-left: 8rpx;
+}

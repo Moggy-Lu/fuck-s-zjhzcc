@@ -9,11 +9,18 @@ Page({
   data: {
     schedule: null,
     week: null,
-    dateList: ['日', '一', '二', '三', '四', '五', '六']
+    dateList: ['日', '一', '二', '三', '四', '五', '六'],
+    hasRequest: true,
   },
   //课程信息格式切换
   regClassicInfo: function (message) {
-    let week = Object.keys(message).map(function (e) { return message[e] })
+    let week = Object.keys(message).sort((a,b)=>{
+      if (parseInt(a.split(",")[0]) > parseInt(b.split(",")[0])){
+        return 1
+      }
+    }).map(function (e) {
+      return message[e]
+      })
     let weekList = []
     for (let item in week) {
       if (week[item] != '') {
@@ -60,7 +67,15 @@ Page({
       wx.hideLoading()
     }, (err)=>{
       console.log(err)
+      this.setData({
+        hasRequest: false
+      })
+      wx.hideLoading()
     })
+  },
+  //网络出错重新加载
+  bindRetry: function (e) {
+    this.onLoad()
   },
   //点击日期切换
   onWeekBind : function(options){

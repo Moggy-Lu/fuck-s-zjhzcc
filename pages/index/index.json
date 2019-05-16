@@ -1,6 +1,10 @@
 {
   "usingComponents": {
     "information-cpt" : "/components/information/index",
-    "fail-cpt": "/components/failPage/index"
+    "fail-cpt": "/components/failPage/index",
+    "l-loading": "/components/loading/index",
+    "loadmore": "/components/loadmore/index",
+    "custom-tab-bar": "/custom-tab-bar/index",
+    "commentInput": "../../components/comment/comment@input/index"
   }
 }

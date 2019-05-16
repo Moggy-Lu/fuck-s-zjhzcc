@@ -5,9 +5,11 @@ class InfoModel extends HTTP{
     super()
   }
   //获取动态列表
-  getInfoList(page, sCallBack, fail, complete) {
+  //type字段0代表精选，1代表关注
+  getInfoList(type, page, sCallBack, fail, complete) {
+    let url = (type == 0) ? '/message/getMessage' : '/message/getMessageByFollow'
     this.request({
-      url: '/message/getMessage',
+      url: url,
       data: {
         'page': page,
         "size":8
@@ -50,7 +52,7 @@ class InfoModel extends HTTP{
       data: {
         'page': page,
         "size": 8,
-        "uid": uid,
+        "id": uid,
       },
       success: (res) => {
         sCallBack && sCallBack(res)
@@ -63,13 +65,14 @@ class InfoModel extends HTTP{
       }
     })
   }
-  //获取关注的用户的动态列表
-  getFollowInfo(page, sCallBack, fail, complete) {
+  //模糊搜索
+  getMessageBySearch(page, text, sCallBack, fail, complete) {
     this.request({
-      url: '/message/getMessageByFollow',
+      url: '/message/getMessageBySearch',
       data: {
         'page': page,
-        "size": 8
+        "size": 3,
+        "text": text,
       },
       success: (res) => {
         sCallBack && sCallBack(res)

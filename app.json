@@ -12,7 +12,10 @@
     "pages/createActive/createActive",
     "pages/myMessage/myMessage",
     "pages/bindClassic/bindClassic",
-    "pages/otherHome/otherHome"
+    "pages/otherHome/otherHome",
+    "pages/search/search",
+    "pages/myNotice/myNotice",
+    "pages/myfollowOrfans/myfollowOrfans"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFB100",
@@ -20,7 +23,7 @@
     "navigationBarTitleText": "去你的杭商",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true,
-    "onReachBottomDistance": 50,
+    "onReachBottomDistance": 20,
     "backgroundColor": "#eee"
   },
   "tabBar": {
@@ -48,5 +51,6 @@
         "selectedIconPath": "imgs/icon/my@3x.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

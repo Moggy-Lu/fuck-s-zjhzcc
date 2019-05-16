@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "information-cpt": "/components/information/index"
+    "information-cpt": "/components/information/index",
+    "custom-tab-bar": "/custom-tab-bar/index"
   }
 }

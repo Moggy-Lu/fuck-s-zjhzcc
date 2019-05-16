@@ -1,0 +1,13 @@
+<!--components/comment/comment@input/index.wxml-->
+<!-- 位于底部的评论栏 -->
+<view wx:if="{{show}}" bindtap='onCommentHidden' class='comment-box'>
+  <view catchtap='inBtn' class='itemMain'>
+    <view class='commentUser'>评论给<span>{{name}}</span></view>
+    <view class='commentInput'>
+      <input cursor-spacing="50" placeholder-style="font-size:14px" focus='true' bindinput='bindCommentInput' placeholder="友善的评论是交流的起点"></input>
+    </view>
+    <view class='iconItem'>
+      <view bindtap='onComment' class='putBtn'>发布</view>
+    </view>
+  </view>
+</view>

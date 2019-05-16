@@ -8,11 +8,11 @@
     <view class='message-box'>
       <view class='name'>{{userInfo.nickName}}</view>
       <view class='follow-box'>
-        <view style='border-right: 2rpx rgba(51,51,51,1) solid;' class='item'>
+        <view data-type='follow' bindtap='switchFollowOrFans' style='border-right: 2rpx rgba(51,51,51,1) solid;' class='item'>
           <view class='title'>关注</view>
           <view class='number'>{{myInfo.follow.fans}}</view>
         </view>
-        <view style='padding-left: 24rpx;' class='item'>
+        <view data-type='fans' bindtap='switchFollowOrFans' style='padding-left: 24rpx;' class='item'>
           <view class='title'>粉丝</view>
           <view class='number'>{{myInfo.follow.follow}}</view>
         </view>
@@ -24,7 +24,7 @@
       <image src='../../imgs/icon/myRelease@3x.svg'></image>
       <view class='title'>我的动态</view>
     </view>
-    <view class='item'>
+    <view bindtap='bindMyNoticeOn' class='item'>
       <image src='../../imgs/icon/myMessage@3x.svg'></image>
       <view class='title'>我的消息</view>
     </view>

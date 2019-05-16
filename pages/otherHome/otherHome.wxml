@@ -1,6 +1,40 @@
 <!--pages/otherHome/otherHome.wxml-->
 <view class='container'>
-  <view class='user-info'></view>
-  <view class='infoList-box'></view>
-  <view class='bottom-box'></view>
+  <view class='personal-box'>
+    <view class='avatarImg'>
+      <image src='{{userInfo.icon}}'></image>
+    </view>
+    <view class='message-box'>
+      <view class='name'>{{'卢山'}}</view>
+      <view class='follow-box'>
+        <view style='border-right: 2rpx rgba(51,51,51,1) solid;' class='item'>
+          <view class='title'>关注</view>
+          <view class='number'>{{userInfo.follow.fans}}</view>
+        </view>
+        <view style='padding-left: 24rpx;' class='item'>
+          <view class='title'>粉丝</view>
+          <view class='number'>{{userInfo.follow.follow}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='infoList-box'>
+    <view class='titleBox'>
+      <view class='title'>全部动态</view>
+    </view>
+    <information-cpt bindcomment="onComment" catchfollow="onFollow" wx:for="{{infoItem}}" infoItem="{{item}}" />
+  </view>
+  <view class='bottom-box'>
+    <view bindtap='onFollowBind' class='itemBox'>
+      <view class='left-item'>
+        <view wx:if="{{!follow}}" class='follow-text'>+ 关注</view>
+        <view wx:if="{{follow}}" class='text'>取消关注</view>
+      </view>
+    </view>
+    <view class='itemBox'>
+      <view class='right-item'>
+        <view class='text'>私信</view>
+      </view>
+    </view>
+  </view>
 </view>

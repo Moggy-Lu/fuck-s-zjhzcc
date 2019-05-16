@@ -13,19 +13,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    belongto: 0,
     articleData: {},
     userFilling : '../../imgs/icon/user-filling.png',
     commentList : {},
-    commentText: '',
-    commentImg: [],
     mid: 0,
-    comType: false,   //回复评论为true，回复文章为false
-    mainComment: {},    //保存被评论的主评论信息
-    commentUser:'', //要评论的人，默认文章作者
     time:'',
-    inputValue:null,    //输入框的值
-    hasMoreData:true,  
+    hasMoreData:true, 
     page:1, 
+    now: 0, //当前页面
+    commentShow: false, //是否显示评论框
+    liked: false,
 
     },
   //点击头像查看他人主页
@@ -36,6 +34,14 @@ Page({
       url: '../../pages/otherHome/otherHome?follow=' + follow + '&&uid=' + uid
     })
   },
+  //切换tag
+  onClickTag: function(option){
+    let index = option.currentTarget.dataset.index
+    this.setData({
+      now: index,
+      comType: false
+    })
+  },
     //点赞
   onLike: function (event) {
     let like_or_cancel = event.detail.behavior
@@ -43,78 +49,55 @@ Page({
       console.log(res)
     })
   },
-    //回复评论
-  catchCommentOn: function (event) {
-    let index = event.currentTarget.dataset['index']
-    let comment = this.data.commentList[index]
-    this.setData({
-      inputFocus:true,
-      comType:true,
-      mainComment: comment,
-      commentUser: comment.nickname_from, 
+  //发送评论的回执函数
+  bindComment: function(){
+    commentModel.getCommentList(this.data.page, this.data.mid, (res) => {
+      let list = res.data
+      this.setData({
+        commentList: list
+      })
     })
   },
-    //发送评论
-    onComment: function(){
-      var that = this
-      if(this.data.commentText != ''){
-        if(this.data.comType) {
-          commentModel.onCommentToCom(
-          this.data.commentText, 
-          this.data.mainComment.id, 
-          this.data.commentImg, 
-          this.data.mainComment.uid_from, (res)=>{
-            that.setData({
-              commentText: ''
-            })
-            commentModel.getCommentList(this.data.page, this.data.mid, (res) => {
-              let list = res.data
-              this.setData({
-                commentList: list
-              })
-            })
-          })
-        }
-        else {
-          commentModel.onComment(this.data.commentText, this.data.mid, this.data.commentImg, (res) => {
-            that.setData({
-              commentText: ''
-            })
-            commentModel.getCommentList(this.data.page, this.data.mid, (res) => {
-              let list = res.data
-              this.setData({
-                commentList: list
-              })
-            })
-          }) 
-        }
-        //清空输入框
-        this.setData({
-          inputValue: null
-        })       
-      }
-    },
-    //保存键盘输入
-    bindCommentInput: function(event){
-      this.setData({
-        commentText: event.detail.value
-      })
-    },
-    //点击图片预览
-    previewImg: function (e) {
-      let index = e.currentTarget.dataset.index;
-      let imgArr = []
-      for (let item in this.data.articleData.imgs) {
-        imgArr.push(this.data.articleData.imgs[item].url)
-      }
-      wx.previewImage({
-        current: imgArr[index],     //当前图片地址
-        urls: imgArr,               //所有要预览的图片的地址集合 数组形式
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    },
+  //点击评论icon评论文章
+  onShowComment: function() {
+    let name = this.data.articleData.nikename
+    let belongto = this.data.articleData.id
+    this.setData({
+      belongto: belongto,
+      comType: false,
+      commentUser: name,
+      commentShow: true,
+    })
+  },
+    //点击评论回执函数
+  catchCommentOn: function (event) {
+    let name = event.detail.name
+    let uidfrom = event.detail.uidfrom
+    let belongto = event.detail.belongto
+    this.setData({
+      belongto: belongto,
+      comType:true,
+      uidfrom: uidfrom,
+      commentUser: name,
+      commentShow: true, 
+    })
+  },
+    
+  //点击图片预览
+  previewImg: function (e) {
+    let index = e.currentTarget.dataset.index;
+    let imgArr = []
+    for (let item in this.data.articleData.imgs) {
+      imgArr.push(this.data.articleData.imgs[item].url)
+    }
+    wx.previewImage({
+      current: imgArr[index],     //当前图片地址
+      urls: imgArr,               //所有要预览的图片的地址集合 数组形式
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -122,10 +105,10 @@ Page({
   onLoad: function (options) {
     this.setData({
       mid: options.id,
+      liked: JSON.parse(options.like)
     })
     //获取文章详情
     articleModel.getArticleDetail(this.data.mid, (res)=>{
-      console.log(res)
       //获取发布时间
       let time = util.getDate(res.create_time)
       this.setData({

@@ -40,6 +40,26 @@ swiper{
   flex-direction: column;
   padding-left: 24rpx;
 }
+.container .classic-main .classicList .failBox{
+  background: #fff;
+  width: 100%;
+  height: 500rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.container .classic-main .classicList .failBox image{
+  width: 370rpx;
+  height: 250rpx;
+}
+.container .classic-main .classicList .failBox .failBoxTitle{
+  color: #aaa;
+  font-size: 14px;
+  margin-top: 80rpx;
+  letter-spacing: 1px;
+}
 .container .classic-main .classicList .classic-text{
   background:rgba(255,255,255,1);
   border-radius:10px;

@@ -50,6 +50,19 @@ class UserModel extends HTTP {
       }
     })
   }
+  //获取关注或粉丝列表
+  getFollowList(id, type, sCallBack){
+    this.request({
+      url: '/user/getFollowList',
+      data: {
+        id: id,
+        type: type
+      },
+      success: (res) => {
+        sCallBack && sCallBack(res)
+      }
+    })
+  }
   //获取自己赞过的动态
   getMyLike(page, sCallBack){
     this.request({
@@ -74,6 +87,18 @@ class UserModel extends HTTP {
     this.request({
       url: '/user/getMyInfo',
       // method:'POST',
+      success: (res) => {
+        sCallBack && sCallBack(res)
+      }
+    })
+  }
+  //获取特定uid的用户信息
+  getUserInfo(uid, sCallBack) {
+    this.request({
+      url: '/user/getUserInfo',
+      data:{
+        id: uid
+      },
       success: (res) => {
         sCallBack && sCallBack(res)
       }

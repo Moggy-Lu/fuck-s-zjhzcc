@@ -1,0 +1,17 @@
+<!--pages/search/search.wxml-->
+<view class='searchContainer'>
+  <view class='search-box'>
+    <view class='search'>
+      <view></view>
+      <view bindtap='bindSearchOn' class='searchInput'>
+        <image src="../../imgs/icon/search.png"></image>
+        <input bindinput="bindKeyCode" placeholder='输入信息关键词' placeholder-style='color:#999; font-size:14px; letter-space:1px' confirm-type='search' focus='{{true}}'></input>
+      </view>
+    </view>
+    <view bindtap='onCancel' class='cancel'>取消</view>
+  </view>
+  <view class='information-main'>
+    <information-cpt bindcomment="onComment" catchfollow="onFollow" wx:for="{{infoList}}" infoItem="{{item}}" />
+     <loadmore type="{{hasMore?'loading':'end'}}" show="{{loadShow}}" line="{{true}}" />
+  </view>
+</view>

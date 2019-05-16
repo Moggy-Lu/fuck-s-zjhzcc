@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "information-cpt": "/components/information/index",
+    "loadmore": "/components/loadmore/index"
+  }
+}

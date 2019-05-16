@@ -33,101 +33,41 @@ Page({
         list:[],
         text: "关注"
       }],
-    radioHidden: false,
-    screenList:['兼职', '求助', '失物招领', '推广', '全部'],
     now: 0,
     hasRequest: true,
-    infoListHeight: 0,
-    top: 0, //精选栏离顶部距离
-    hasScroll: false, //scroll-view是否可以滚动
-    scrollHeight: null,  //scroll-view的高度
-    swiperHeight: 0,   // swiper的高度  
-    tag: '全部',
     hideComment: false,  //是否隐藏评论输入框
-    commentText: '', //输入框文本
     mid: '',
+    commentName: '',
+    top: 0,   //tag栏距顶部标题栏的距离
+    scrollTop: 0,    //页面滚动距离
+    
   },
   //弹出评论接口
   onComment: function(event){
     let mid = event.detail.mid
+    let nickname = event.detail.nickname
+    console.log(mid)
     this.setData({
       hideComment: true,
       mid: mid,
+      commentName: nickname,
     })
   },
-  //点击其他位置隐藏
-  hiddenComment: function(event){
+  //发布评论回执函数
+  bindComment: function(){
+    let tagList = this.data.tagList
+    let list = tagList[this.data.now].list
+    for (let i in list) {
+      if (list[i].id == this.data.mid) {
+        list[i].sum_reply += 1
+        break
+      }
+    }
+    tagList[this.data.now].list = list
     this.setData({
       hideComment: false,
-      commentText: '',
       mid: '',
-    })
-  },
-  //点击评论框不隐藏输入框
-  showComment: function(){
-    this.setData({
-      hideComment: true
-    })
-  },
-  //键盘输入储存
-  bindCommentInput: function(event){
-    this.setData({
-      commentText: event.detail.value
-    })
-  },
-  //发布评论
-  bindComment: function(){
-    wx.showLoading({
-      title: '评论中',
-    })
-    commentModel.onComment(this.data.commentText, this.data.mid, [], (res) => {
-      var that = this
-      let tagList = that.data.tagList
-      for (let i in tagList[that.data.now].list) {
-        if (tagList[this.data.now].list[i].id == that.data.mid) {
-          tagList[that.data.now].list[i].sum_reply += 1
-          that.setData({
-            tagList: tagList
-          })
-        }
-      }
-      this.setData({
-        hideComment: false,
-        commentText: '',
-        mid: '',
-      })
-      wx.hideLoading()
-      wx.showToast({
-        title: '',
-      })
-    })
-  },
-  //筛选单项选择器方法
-  radioChange: function(event){
-    let value = event.detail.value
-    value = '#' + value 
-    let tagList = this.data.tagList
-    console.log(value)
-    infoModule.getMessageByTag(value, 1, (res) => {
-      console.log(res.data)
-      tagList[0].list = res.data
-      tagList[0].page = 2
-      this.setData({
-        tag: value,
-        tagList: tagList
-      })
-    })
-  },
-  //隐藏单项选择器
-  onHidden: function(event){
-    this.setData({
-      radioHidden: false
-    })
-  },
-  //显示单项选择器
-  screenShow:function(event){
-    this.setData({
-      radioHidden: true
+      tagList: tagList
     })
   },
   //修改关注按钮状态
@@ -168,11 +108,6 @@ Page({
     })
   },
 
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-
 //页面初始化函数
   _init: function() {
     var that = this
@@ -181,16 +116,12 @@ Page({
     }, {
         page: 1, hasMore: true, text: '关注', list: []
       }]
-    infoModule.getInfoList(tagList[0].page, (res) => {
-      tagList[0].list = res.data
-      infoModule.getFollowInfo(tagList[1].page, (res)=> {
-        tagList[1].list = res.data
-        that.setData({
-          tagList: tagList,
-          tag: '全部'
-        })
-        wx.stopPullDownRefresh()
+    infoModule.getInfoList(that.data.now, tagList[that.data.now].page, (res) => {
+      tagList[that.data.now].list = res.data
+      that.setData({
+        tagList: tagList
       })
+      wx.stopPullDownRefresh()
     }, (err)=>{
       console.log(err)
       this.setData({
@@ -198,67 +129,63 @@ Page({
       })
     })
   },
+  //网络出错重新加载
   bindRetry : function(e){
     this.onLoad()
   },
-  //页面滚动监听函数
-  onPageScroll: function(e) {
-    if (e.scrollTop >= this.data.top){
-      let height = this.data.swiperHeight
-      this.setData({
-        hasScroll: true,
-        scrollHeight: height
-      })
-    }
-    else{
-      this.setData({
-        hasScroll: false,
-        scrollHeight: null
-      })
-    }
-  },
-  //scroll-view滚动到顶部的触发方法
-  upper: function(e){
-    this.setData({
-      hasScroll: false,
-      scrollHeight: null
-    })
-  },
-  //scroll-view滚动到底部的触发方法
-  lower: function (e) {
-    let height = this.data.swiperHeight
-    this.setData({
-      hasScroll: true,
-      scrollHeight: height
-    })
-    this.bottomBind()
-  },
   //点击分类切换
   onTagBind: function (options) {
+    let that = this
+    let tagList = that.data.tagList
     let index = options.target.dataset.index
     this.setData({
       now: index
     })
+    if(tagList[index].list.length == 0){
+      infoModule.getInfoList(index, tagList[index].page, (res) => {
+        tagList[index].list = res.data
+        that.setData({
+          tagList: tagList
+        })
+        wx.stopPullDownRefresh()
+      }, (err) => {
+        console.log(err)
+        this.setData({
+          hasRequest: false
+        })
+      })
+    }
   },
-  //滑动滑块切换Tag
-  changeTag: function (options) {
-    let num = options.detail.current
-    this.setData({
-      now: num
+  //点击搜索栏跳转搜索页面
+  bindSearchOn: function(){
+    wx.navigateTo({
+      url: '../search/search'
     })
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  //监听页面滚动
+  onPageScroll: function (e) {
+    this.setData({
+      scrollTop: e.scrollTop
+    })
+  },
+
   onLoad: function (options) {
     var that = this
-    wx.getSystemInfo({
-      success:function(res){
-        that.setData({
-          swiperHeight: res.windowHeight - 50
-        })
-      }
-    })
     let couTime = setInterval(function(){
       wx.showLoading({
         title: '初始化',
+      })
+      const query = wx.createSelectorQuery()
+      query.select('.classify-box').boundingClientRect()
+      query.selectViewport().scrollOffset()
+      query.exec(function (res) {
+        that.setData({
+          top: res[0].top
+        })
       })
       if(app.globalData.over){
         wx.hideLoading()
@@ -272,89 +199,19 @@ Page({
     }, 200)
     this._init()
   },
-  //跳转tag标签
-  onScrollItem: function(e){
-    let data = this.data.tagList
-    data.map(function(v){v.status=false;})
-    data[e.target.dataset.index].status = true
-    this.setData({
-      tagList: data
-    })
-  },
-  //下拉刷新方法
-  bottomBind: function(){
-    var that = this
-    let tagList = this.data.tagList
-    for (let i in tagList) {
-      if (this.data.now == i) {
-        if (tagList[i].hasMore) {
-          let pageNum = tagList[i].page
-          pageNum++
-          if (this.data.now == 0) {
-            infoModule.getInfoList(pageNum, (res) => {
-              if (res.data.length != 0) {
-                tagList[i].list = tagList[i].list.concat(res.data)
-                tagList[i].page = pageNum
-              }
-              else {
-                tagList[i].hasMore = false
-              }
-            })
-          }
-          if (this.data.now == 1) {
-            if(this.data.tag == '全部'){
-              infoModule.getFollowInfo(pageNum, (res) => {
-                if (res.data.length != 0) {
-                  tagList[i].list = tagList[i].list.concat(res.data)
-                  tagList[i].page = pageNum
-                }
-                else {
-                  tagList[i].hasMore = false
-                }
-              })
-            }
-            else{
-              infoModule.getMessageByTag(this.data.tag, pageNum, (res) => {
-                if (res.data.length != 0) {
-                  tagList[i].list = tagList[i].list.concat(res.data)
-                  tagList[i].page = pageNum
-                }
-                else {
-                  tagList[i].hasMore = false
-                }
-              })
-            }
-          }
-          that.setData({
-            tagList: tagList
-          })
-        }
-        else {
-          console.log('已经到头了')
-        }
-      }
-    }
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var that = this
-    let q = wx.createSelectorQuery()
-    q.select('.classify-box').boundingClientRect()
-    q.exec(function (res) {
-      that.setData({
-        top: res[0].top - 50
-      })
-    })
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('show')
+    // this.getTabBar().show(0)
     if (!app.globalData.authorize){
       wx.redirectTo({
         url: '../../pages/first/first',
@@ -388,7 +245,29 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    // this.bottomBind()
+    var that = this
+    let tagList = this.data.tagList
+    let now = this.data.now
+    if(tagList[now].hasMore){
+      let pageNum = tagList[now].page
+      pageNum++
+      infoModule.getInfoList(now, pageNum, (res)=> {
+        if (res.data.length != 0) {
+          tagList[now].list = tagList[now].list.concat(res.data)
+          tagList[now].page = pageNum
+        }
+        else {
+          tagList[now].hasMore = false
+          console.log('已经到头了')
+        }
+        that.setData({
+          tagList: tagList
+        })
+      })
+    }
+    else{
+      console.log('已经到头了')
+    }
   },
 
   /**

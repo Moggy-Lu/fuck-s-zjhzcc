@@ -46,6 +46,19 @@ Page({
       url: '../myMessage/myMessage',
     })
   },
+  //跳转到我的消息页面
+  bindMyNoticeOn: function () {
+    wx.navigateTo({
+      url: '../myNotice/myNotice',
+    })
+  },
+  //跳转到我的关注或粉丝页面
+  switchFollowOrFans: function(options) {
+    let type = options.currentTarget.dataset.type
+    wx.navigateTo({
+      url: '../myfollowOrfans/myfollowOrfans?type='+type,
+    })
+  },
   //页面初始化
   _init(){
     //页面标题
@@ -85,6 +98,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // this.getTabBar().show(2)
     this._init()
   },
 

@@ -4,7 +4,7 @@
     <view class='week-box'>
       <view bindtap='onWeekBind' data-index="{{index}}" wx:for="{{dateList}}" class='{{index==now?"active":""}} week-item'>{{item}}</view>
     </view>
-    <swiper circular="{{true}}" bindchange="changeWeek" current="{{now}}" next-margin="54rpx">
+    <swiper wx:if="{{hasRequest}}" circular="{{true}}" bindchange="changeWeek" current="{{now}}" next-margin="54rpx">
       <block wx:for="{{schedule}}" wx:for-index="weekIndex">
         <swiper-item>
           <view class='classicList'>
@@ -22,9 +22,14 @@
                 </view>
               </view>
             </view>
+            <view class='failBox' wx:if="{{schedule[weekIndex].length==0}}">
+              <image src='../../imgs/icon/noClassic@3x.png'></image>
+              <view class='failBoxTitle'>今天没课哟</view>
+            </view>
           </view>
         </swiper-item>
       </block>
     </swiper>
+    <fail-cpt wx:if="{{!hasRequest}}" bindretry="bindRetry" />
   </view>
 </view>

@@ -1,23 +1,38 @@
 <!--components/comment/comment@info/index.wxml-->
-<view class='container'>
+<view data-belongto='{{commentData.id}}' data-uidfrom='{{commentData.uid_from}}' data-name='{{commentData.nickname_from}}' bindtap='commentToInfo' class='container'>
   <view class='header'>
-    <view class='avatarUrl'>
-    <image src='{{commentData.icon}}'></image>
+    <view class='leftBox'>
+      <view class='avatarUrl'>
+        <image src='{{commentData.icon}}'></image>
+      </view>
+      <view class='userInfo'>
+        <view class='nickName'>{{commentData.nickname_from}}</view>
+        <view class='upDate'>{{time}}</view>
+      </view>
     </view>
-    <view class='userInfo'>
-      <view class='nickName'>{{commentData.nickname_from}}</view>
-      <view class='upDate'>{{time}}</view>
+    <view class='rightBox'>
+      <view class='itemBox'>
+        <view class='iconItem'></view>
+        <view class='number'>{{subreplyNumber}}</view>
+      </view>
     </view>
   </view>
   <view class='commentText'>
     <view class='text'>{{commentData.text}}</view>
     <view class='reply-comment-box'></view>
   </view>
-  <view wx:if="{{isSubreply}}" class='subreply-box'>
-    <view class='subreply-item' wx:for="{{commentData.subreply.data}}">
+  <view wx:if="{{isSubreply && !hiddenMore}}" class='subreply-box'>
+    <view data-belongto='{{commentData.id}}' data-uidfrom='{{item.uid_from}}' data-name='{{item.nickname_from}}' catchtap='commentToCom' class='subreply-item' wx:for="{{commentData.subreply.data}}">
       <p class='subreply-text'>
       <view class='subreply-name'>{{item.nickname_from}}</view>
       ：{{item.text}}</p>
+    </view>
+  </view>
+  <view wx:if="{{isSubreply && hiddenMore}}" class='subreply-box'>
+    <view catchtap='commentToCom' class='hiddenComment'>
+      <view class='commentUser'>{{commentData.subreply.data[0].nickname_from}}</view>
+      <span>等</span>
+      <view catchtap='onMore' class='moreBtn'>共{{commentData.subreply.data.length}}条回复></view>
     </view>
   </view>
 </view>

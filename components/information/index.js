@@ -40,7 +40,6 @@ Component({
         })
       }
       this.setData({
-        like: this.properties.infoItem.liked,
         time: time
       })
     },
@@ -85,7 +84,8 @@ Component({
     onComment: function(event){
       var that = this
       this.triggerEvent('comment', {
-        mid: that.data.infoItem.id
+        mid: that.data.infoItem.id,
+        nickname: that.data.infoItem.nickname
       }, {})
     },
     //点赞
@@ -117,7 +117,7 @@ Component({
     },
     clickInfo: function(event) {
       wx.navigateTo({
-        url: '../../pages/articleDetail/articleDetail?id='+this.data.infoItem.id
+        url: '../../pages/articleDetail/articleDetail?id='+this.data.infoItem.id+'&like='+this.data.like
       })
     },
     //点击头像查看他人主页

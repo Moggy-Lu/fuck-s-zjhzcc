@@ -12,24 +12,49 @@
       <view wx:if="{{!articleData.follow}}" class='concern-btn'>关注</view>
     </view>
     <view class='article'>
-      <view class='text'>{{articleData.text}}</view>
+      <text class='text'>{{articleData.text}}</text>
       <view class='imagesList'>
         <image catchtap='previewImg' mode='aspectFill' data-index='{{index}}' catchtap='previewImg' wx:key="key" wx:for="{{articleData.imgs}}" src='{{item.url}}'></image>
       </view>
     </view>
+  </view>
+  <view class='tagBar'>
+    <view bindtap='onClickTag' class='itemBox' data-index='2'>
+      <view class='itemText'>
+        <view class='title'>转发</view>
+        <view class='number'>{{33}}</view>
+      </view>
+      <view class='line {{now==2?"active":""}}'></view>
+    </view>
+    <view class='rightItem'>
+      <view bindtap='onClickTag' class='itemBox' data-index='1'>
+        <view class='itemText'>
+          <view class='title'>点赞</view>
+          <view class='number'>{{articleData.sum_like}}</view>
+        </view>
+        <view class='line {{now==1?"active":""}}'></view>
+      </view>
+      <view bindtap='onClickTag' class='itemBox' data-index='0'>
+        <view class='itemText'>
+          <view class='title'>评论</view>
+          <view class='number'>{{articleData.sum_reply}}</view>
+        </view>
+        <view class='line {{now==0?"active":""}}'></view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{now == 0}}" class='comment-main'>
+    <view class='allComment'>
+      <commentInfo-cpt data-index="{{index}}" catch:comTo="catchCommentOn" commentData="{{item}}" wx:key="key" wx:for="{{commentList}}" />
+    </view>
+  </view>
+  <view class='icon-box'>
     <view class='action-icon' catchtap="clickAction">
       <forward-cpt style="flex:1;" />
-      <commentIcon-cpt style="flex:1;" count="{{articleData.sum_reply}}" mid="{{articleData.id}}" />
-      <like-cpt style="flex:1;" catch:like="onLike" class="like" like="{{articleData.like}}" count="{{articleData.sum_like}}" />
+      <commentIcon-cpt catchtap="onShowComment" style="flex:1;" count="{{articleData.sum_reply}}" mid="{{articleData.id}}" />
+      <like-cpt style="flex:1;" catch:like="onLike" class="like" like="{{liked}}" count="{{articleData.sum_like}}" />
     </view>
-  </view>
-  <view class='comment-main'>
-    <view class='allComment'>
-      <commentInfo-cpt data-index="{{index}}" catch:tap="catchCommentOn" commentData="{{item}}" wx:key="key" wx:for="{{commentList}}" />
-    </view>
-  </view>
-  <view class='comment-box'>
-    <input value='{{inputValue}}' focus='{{inputFocus}}' bindinput='bindCommentInput' cursor-spacing='10rpx' placeholder='评论{{commentUser}}：' placeholder-class='placeholderCss'></input>
-    <view bindtap='onComment' class='commentBtn'>发送</view>
   </view>
 </view>
+<!-- 位于底部的评论栏 -->
+<commentInput belongto="{{belongto}}" type="{{comType}}" name="{{commentUser}}" uid_from="{{uidfrom}}" bind:comment="bindComment" show="{{commentShow}}" />
